@@ -1,19 +1,11 @@
-//
-//  ViewController.swift
-//  UIKitDZ
-//
-//  Created by Dmitriy Starozhilov on 05.02.2024.
-//
+// ViewController.swift
+// Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
+// Описание
 class ViewController: UIViewController {
-
     override func viewDidLoad() {
-        super.viewDidLoad()
         // Do any additional setup after loading the view.
     }
-
-
 }
-
