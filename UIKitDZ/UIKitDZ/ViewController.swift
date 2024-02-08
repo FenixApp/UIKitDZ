@@ -28,7 +28,7 @@ class ViewController: UIViewController {
     func setBackground() {
         let backgroundImage = UIImageView(frame: frame)
         backgroundImage.image = UIImage(named: "Background")
-        backgroundImage.frame = view.bounds
+        backgroundImage.frame = CGRect(x: 0, y: 60 - view.safeAreaInsets.top, width: frame.width, height: frame.height)
         view.addSubview(backgroundImage)
     }
 
@@ -69,6 +69,7 @@ class ViewController: UIViewController {
         guessNumberButton.titleLabel?.lineBreakMode = .byWordWrapping
         guessNumberButton.titleLabel?.textAlignment = .center
         guessNumberButton.clipsToBounds = true
+        guessNumberButton.addTarget(self, action: #selector(guessNumber), for: .allEvents)
         view.addSubview(guessNumberButton)
     }
 
@@ -113,6 +114,13 @@ class ViewController: UIViewController {
         present(alertResult, animated: true)
     }
 
+    func resultGuessNumber(title: String, message: String, style: UIAlertController.Style) {
+        let alertResult = UIAlertController(title: title, message: message, preferredStyle: style)
+        let okAction = UIAlertAction(title: "Ok", style: .default)
+        alertResult.addAction(okAction)
+        present(alertResult, animated: true)
+    }
+
     @objc private func calculateNumbers() {
         let alertCalculateNumbers = UIAlertController(title: "Введите ваши числа", message: nil, preferredStyle: .alert)
         let actionNumbers = UIAlertAction(title: "Сложить", style: .default) { _ in
@@ -124,6 +132,10 @@ class ViewController: UIViewController {
 
             self.resultCalculateNumbers(title: "Ваш результат", message: String(sum), style: .alert)
         }
+        let actionCancel = UIAlertAction(title: "Отмена", style: .cancel)
+
+        alertCalculateNumbers.addAction(actionNumbers)
+        alertCalculateNumbers.addAction(actionCancel)
 
         alertCalculateNumbers.addTextField { textField in
             textField.placeholder = "Число 1"
@@ -131,9 +143,29 @@ class ViewController: UIViewController {
         alertCalculateNumbers.addTextField { textField in
             textField.placeholder = "Число 2"
         }
-        _ = UIAlertAction(title: "Отмена", style: .cancel)
 
-        alertCalculateNumbers.addAction(actionNumbers)
         present(alertCalculateNumbers, animated: true, completion: nil)
+    }
+
+    @objc private func guessNumber() {
+        let alertGuessNumber = UIAlertController(title: "Угадай число от 1 до 10", message: nil, preferredStyle: .alert)
+        let actionGuess = UIAlertAction(title: "Ок", style: .default) { _ in
+            let randomNumber = Int.random(in: 1 ... 10)
+            let text = alertGuessNumber.textFields?.first
+            if text?.text == String(randomNumber) {
+                self.resultGuessNumber(title: "Поздравляю!", message: "Вы угадали", style: .alert)
+            } else {
+                self.resultGuessNumber(title: "Упс!", message: "Это неверный ответ", style: .alert)
+            }
+        }
+        let actionCancel = UIAlertAction(title: "Отмена", style: .cancel)
+
+        alertGuessNumber.addTextField { textField in
+            textField.placeholder = "Введите число"
+        }
+
+        alertGuessNumber.addAction(actionGuess)
+        alertGuessNumber.addAction(actionCancel)
+        present(alertGuessNumber, animated: true, completion: nil)
     }
 }
