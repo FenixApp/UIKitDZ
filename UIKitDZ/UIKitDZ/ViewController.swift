@@ -4,12 +4,12 @@
 import UIKit
 
 // Главный экран
-class ViewController: UIViewController {
-    let frame = UIScreen.main.bounds
-    let nameLabel = UILabel()
-    let greetingView = UIView()
-    let calculationButton = UIButton()
-    let guessNumberButton = UIButton()
+final class ViewController: UIViewController {
+    private let frame = UIScreen.main.bounds
+    private let nameLabel = UILabel()
+    private let greetingView = UIView()
+    private let calculationButton = UIButton()
+    private let guessNumberButton = UIButton()
 
     override func viewDidAppear(_ animated: Bool) {
         alertGreeting(title: "Пожалуйста,\n представьтесь", message: "", style: .alert)
@@ -25,14 +25,16 @@ class ViewController: UIViewController {
         setCalculateButton()
     }
 
-    func setBackground() {
+    // Настройка фона
+    private func setBackground() {
         let backgroundImage = UIImageView(frame: frame)
         backgroundImage.image = UIImage(named: "Background")
         backgroundImage.frame = CGRect(x: 0, y: 60 - view.safeAreaInsets.top, width: frame.width, height: frame.height)
         view.addSubview(backgroundImage)
     }
 
-    func setGreetingView() {
+    // Настройка подложки для приветствия
+    private func setGreetingView() {
         let greetingViewSize = CGSize(width: frame.width, height: 100)
         let greetingViewPoint = CGPoint(x: 0, y: 50)
         greetingView.frame = CGRect(origin: greetingViewPoint, size: greetingViewSize)
@@ -43,7 +45,8 @@ class ViewController: UIViewController {
         view.addSubview(greetingView)
     }
 
-    func setNameLabel() {
+    // Настройка текста приветствия
+    private func setNameLabel() {
         let nameLabelFrame = CGRect(x: 40, y: 50, width: 290, height: 102)
         nameLabel.frame = nameLabelFrame
         nameLabel.font = UIFont.boldSystemFont(ofSize: 40)
@@ -57,7 +60,8 @@ class ViewController: UIViewController {
         view.addSubview(nameLabel)
     }
 
-    func setGuessNumberButton() {
+    // Настройка кнопки "Угадай число"
+    private func setGuessNumberButton() {
         guessNumberButton.frame = CGRect(x: 80, y: 290, width: 150, height: 150)
         guessNumberButton.backgroundColor = UIColor(named: "GuessButton")
         guessNumberButton.layer.borderWidth = 3
@@ -73,7 +77,8 @@ class ViewController: UIViewController {
         view.addSubview(guessNumberButton)
     }
 
-    func setCalculateButton() {
+    // Настройка кнопки "Калькулятор"
+    private func setCalculateButton() {
         calculationButton.frame = CGRect(x: 150, y: 490, width: 200, height: 200)
         calculationButton.backgroundColor = UIColor(named: "CalcButton")
         calculationButton.layer.borderWidth = 3
@@ -89,11 +94,12 @@ class ViewController: UIViewController {
         view.addSubview(calculationButton)
     }
 
-    func alertGreeting(title: String, message: String, style: UIAlertController.Style) {
+    // Настройка аллерта приветствия
+    private func alertGreeting(title: String, message: String, style: UIAlertController.Style) {
         let alertGreeting = UIAlertController(title: title, message: message, preferredStyle: style)
         let action = UIAlertAction(title: "Готово", style: .default) { _ in
             let text = alertGreeting.textFields?.first
-            self.nameLabel.text? += (text?.text ?? "")
+            self.nameLabel.text? += (text?.text ?? "") + "!"
             self.greetingView.isHidden = false
             self.nameLabel.isHidden = false
         }
@@ -105,7 +111,8 @@ class ViewController: UIViewController {
         present(alertGreeting, animated: true, completion: nil)
     }
 
-    func resultCalculateNumbers(title: String, message: String, style: UIAlertController.Style) {
+    // Итоговый аллерт "Сложение чисел"
+    private func resultCalculateNumbers(title: String, message: String, style: UIAlertController.Style) {
         let alertResult = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: "Ok", style: .default)
         let cancelAction = UIAlertAction(title: "Отмена", style: .cancel)
@@ -114,13 +121,15 @@ class ViewController: UIViewController {
         present(alertResult, animated: true)
     }
 
-    func resultGuessNumber(title: String, message: String, style: UIAlertController.Style) {
+    // Итоговый аллерт "Угадай число"
+    private func resultGuessNumber(title: String, message: String, style: UIAlertController.Style) {
         let alertResult = UIAlertController(title: title, message: message, preferredStyle: style)
         let okAction = UIAlertAction(title: "Ok", style: .default)
         alertResult.addAction(okAction)
         present(alertResult, animated: true)
     }
 
+    // Функция с аллертом "Сложение чисел"
     @objc private func calculateNumbers() {
         let alertCalculateNumbers = UIAlertController(title: "Введите ваши числа", message: nil, preferredStyle: .alert)
         let actionNumbers = UIAlertAction(title: "Сложить", style: .default) { _ in
@@ -147,6 +156,7 @@ class ViewController: UIViewController {
         present(alertCalculateNumbers, animated: true, completion: nil)
     }
 
+    // Функция с аллертом "Угадай число"
     @objc private func guessNumber() {
         let alertGuessNumber = UIAlertController(title: "Угадай число от 1 до 10", message: nil, preferredStyle: .alert)
         let actionGuess = UIAlertAction(title: "Ок", style: .default) { _ in
