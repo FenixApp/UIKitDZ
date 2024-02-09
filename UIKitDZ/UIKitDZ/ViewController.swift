@@ -5,7 +5,19 @@ import UIKit
 
 // Описание
 class ViewController: UIViewController {
+    
+    @IBOutlet weak var mailTextField: UITextField!
+    @IBOutlet weak var passwordTextField: UITextField!
+    @IBOutlet weak var loginButton: UIButton!
+    
+    
+    
     override func viewDidLoad() {
-        // Do any additional setup after loading the view.
+        loginButton.layer.cornerRadius = 10
+        
+        
+    }
+    
+    @IBAction func loginButtonTapped(_ sender: UIButton) {
     }
 }
