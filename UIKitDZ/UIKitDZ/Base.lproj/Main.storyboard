@@ -83,7 +83,7 @@
                     <navigationItem key="navigationItem" id="qwM-xM-r9s"/>
                     <connections>
                         <outlet property="loginButton" destination="RrP-HJ-f2S" id="Itz-5M-gLc"/>
-                        <outlet property="mailTextField" destination="kmh-Ex-f3J" id="T8X-pe-Vex"/>
+                        <outlet property="mailTextField" destination="v6z-Np-fVt" id="691-rb-Hgx"/>
                         <outlet property="passwordTextField" destination="kmh-Ex-f3J" id="c9N-fx-Wyi"/>
                     </connections>
                 </viewController>
@@ -91,10 +91,10 @@
             </objects>
             <point key="canvasLocation" x="1103.0534351145038" y="-32.394366197183103"/>
         </scene>
-        <!--View Controller-->
+        <!--Кафе Алиса-->
         <scene sceneID="Tmb-Md-fiH">
             <objects>
-                <viewController id="B17-MA-Z13" sceneMemberID="viewController">
+                <viewController title="Кафе Алиса" id="B17-MA-Z13" customClass="SecondViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="hUw-xk-228">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -108,7 +108,8 @@
                                 <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
                                 <state key="normal" title="Выставить счет"/>
                                 <connections>
-                                    <segue destination="gml-0r-Odk" kind="show" id="IOE-zE-jfb"/>
+                                    <action selector="getCheckButton:" destination="B17-MA-Z13" eventType="touchUpInside" id="anp-v4-aPY"/>
+                                    <segue destination="gml-0r-Odk" kind="show" identifier="scoreVC" id="dnh-d4-RY3"/>
                                 </connections>
                             </button>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="ФИО" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="6SI-dk-eqy">
@@ -195,15 +196,21 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="ARf-jk-f4S"/>
+                    <connections>
+                        <outlet property="checkButton" destination="Tmu-b5-lA5" id="Xdb-eZ-3i1"/>
+                        <outlet property="fullNameTextfield" destination="FB8-af-5iM" id="Xy5-Xf-cUs"/>
+                        <outlet property="numberTableTextfield" destination="zP4-0S-5fg" id="jLJ-46-RRF"/>
+                        <outlet property="numbersGuestsTextfield" destination="Rug-IH-hld" id="qpT-yr-xcW"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="PgB-g4-ZKH" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="1838.9312977099237" y="-32.394366197183103"/>
         </scene>
-        <!--View Controller-->
+        <!--Чек-->
         <scene sceneID="Uok-dP-fQM">
             <objects>
-                <viewController id="gml-0r-Odk" sceneMemberID="viewController">
+                <viewController title="Чек" id="gml-0r-Odk" customClass="ThirdViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="bHt-1c-zeI">
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -270,6 +277,9 @@
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
                     <navigationItem key="navigationItem" id="Uo4-lj-QLz"/>
+                    <connections>
+                        <outlet property="resultButton" destination="DmZ-Om-57n" id="hZr-Bg-36m"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="cFl-qD-PJ2" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
