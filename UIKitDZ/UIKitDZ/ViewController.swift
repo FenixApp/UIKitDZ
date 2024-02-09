@@ -6,7 +6,7 @@ import UIKit
 // Стартовый экран
 final class ViewController: UIViewController {
     let word = Word()
-    
+
     private let inputLabel: UILabel = {
         let label = UILabel()
         label.text = "Вы ввели слово"
@@ -16,7 +16,7 @@ final class ViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-    
+
     private let wordLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 50, y: 150, width: 275, height: 57)
@@ -26,7 +26,7 @@ final class ViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-    
+
     private let descriptionLabel: UILabel = {
         let label = UILabel()
         label.text = "А вот что получится, если читать справа налево"
@@ -37,7 +37,7 @@ final class ViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-    
+
     private let wordReverseLabel: UILabel = {
         let label = UILabel()
         label.frame = CGRect(x: 50, y: 300, width: 275, height: 57)
@@ -47,7 +47,7 @@ final class ViewController: UIViewController {
         label.isHidden = true
         return label
     }()
-    
+
     private lazy var beginButton: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 76 / 255, green: 216 / 255, blue: 102 / 255, alpha: 1)
@@ -58,7 +58,7 @@ final class ViewController: UIViewController {
         button.addTarget(self, action: #selector(alertAction), for: .allEvents)
         return button
     }()
-    
+
     private lazy var beginButtonDown: UIButton = {
         let button = UIButton()
         button.backgroundColor = UIColor(red: 76 / 255, green: 216 / 255, blue: 102 / 255, alpha: 1)
@@ -70,10 +70,10 @@ final class ViewController: UIViewController {
         button.isHidden = true
         return button
     }()
-    
+
     override func viewDidLoad() {
         super.viewDidLoad()
-        
+
         view.addSubview(inputLabel)
         view.addSubview(wordLabel)
         view.addSubview(descriptionLabel)
@@ -81,12 +81,12 @@ final class ViewController: UIViewController {
         view.addSubview(beginButton)
         view.addSubview(beginButtonDown)
     }
-    
+
     @objc private func alertAction() {
         let alert = UIAlertController(title: "Введите ваше слово", message: nil, preferredStyle: .alert)
         let action = UIAlertAction(title: "Ок", style: .default) { _ in
             guard let text = alert.textFields?.first?.text else { return }
-            
+
             self.wordReverseLabel.text = self.word.getWord(word: text).capitalized
             self.wordLabel.text = text
             self.inputLabel.isHidden = false
@@ -96,12 +96,12 @@ final class ViewController: UIViewController {
             self.beginButton.isHidden = true
             self.beginButtonDown.isHidden = false
         }
-        
+
         let cancel = UIAlertAction(title: "Отмена", style: .cancel)
         alert.addTextField { textField in
             textField.placeholder = "Введите слово"
         }
-        
+
         alert.addAction(action)
         alert.addAction(cancel)
         present(alert, animated: true, completion: nil)
