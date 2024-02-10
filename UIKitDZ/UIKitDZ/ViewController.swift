@@ -3,14 +3,19 @@
 
 import UIKit
 
-// Главный экран
+/// ViewController с основным экраном приложения
 final class ViewController: UIViewController {
+    
+    // MARK: - Public Properties
+    
     private let frame = UIScreen.main.bounds
     private let nameLabel = UILabel()
     private let greetingView = UIView()
     private let calculationButton = UIButton()
     private let guessNumberButton = UIButton()
 
+    // MARK: - Override Methods
+    
     override func viewDidAppear(_ animated: Bool) {
         alertGreeting(title: "Пожалуйста,\n представьтесь", message: "", style: .alert)
     }
@@ -24,6 +29,8 @@ final class ViewController: UIViewController {
         setGuessNumberButton()
         setCalculateButton()
     }
+    
+    // MARK: - Private methods
 
     // Настройка фона
     private func setBackground() {
