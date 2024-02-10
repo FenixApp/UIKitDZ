@@ -3,14 +3,17 @@
 
 import UIKit
 
-// Экран с бронированием
+/// Class с экраном бронирования
 class SecondViewController: UIViewController {
+    // MARK: - IBOutlets
+    
     @IBOutlet var fullNameTextfield: UITextField!
     @IBOutlet var numbersGuestsTextfield: UITextField!
     @IBOutlet var numberTableTextfield: UITextField!
-
     @IBOutlet var checkButton: UIButton!
 
+    // MARK: - Override Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         checkButton.layer.cornerRadius = 10
@@ -29,7 +32,10 @@ class SecondViewController: UIViewController {
         super.viewWillAppear(animated)
         navigationItem.title = "Кафе Алиса"
     }
+    
+    // MARK: - IBAction
 
+    // Сообщение о выставлении чека
     @IBAction func getCheckButton(_ sender: UIButton) {
         let alert = UIAlertController(title: "Выставить чек?", message: nil, preferredStyle: .alert)
         let cancel = UIAlertAction(title: "Отмена", style: .cancel)
@@ -41,7 +47,10 @@ class SecondViewController: UIViewController {
         alert.addAction(okAction)
         present(alert, animated: true)
     }
+    
+    // MARK: - Methods
 
+    // Проверка на заполненность обязательных полей
     @objc func changedTextFields(_ sender: UIButton) {
         guard let fullName = fullNameTextfield.text,
               !fullName.isEmpty,

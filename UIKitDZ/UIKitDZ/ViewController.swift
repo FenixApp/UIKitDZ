@@ -3,12 +3,17 @@
 
 import UIKit
 
-// Стартовый экран
+/// Class со стартовым экраном приложения
 class ViewController: UIViewController {
+    
+    // MARK: - IBOutlets
+
     @IBOutlet var mailTextField: UITextField!
     @IBOutlet var passwordTextField: UITextField!
     @IBOutlet var loginButton: UIButton!
 
+    // MARK: - Overide Methods
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         loginButton.layer.cornerRadius = 10
@@ -20,9 +25,13 @@ class ViewController: UIViewController {
         mailTextField.addBottomBorder()
         passwordTextField.addBottomBorder()
     }
+    
+    // MARK: - IBAction
 
     @IBAction func loginButtonTapped(_ sender: UIButton) {}
 
+    // MARK: - Methods
+    
     @objc func changedTextFields(_ textField: UITextField) {
         guard let mail = mailTextField.text,
               !mail.isEmpty,
@@ -36,6 +45,8 @@ class ViewController: UIViewController {
         loginButton.layer.backgroundColor = UIColor(named: "Active")?.cgColor
     }
 }
+
+// MARK: - Extensions
 
 extension UITextField {
     func addBottomBorder() {
