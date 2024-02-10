@@ -3,10 +3,15 @@
 
 import UIKit
 
-// Стартовый экран
+/// Основной class, в котором реализовано приложение
 final class ViewController: UIViewController {
+    
+    // MARK: - Public Properties
+    
     let word = Word()
 
+    // MARK: - Private Properties
+    
     private let inputLabel: UILabel = {
         let label = UILabel()
         label.text = "Вы ввели слово"
@@ -70,6 +75,8 @@ final class ViewController: UIViewController {
         button.isHidden = true
         return button
     }()
+    
+    // MARK: - Override Methods
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -81,6 +88,8 @@ final class ViewController: UIViewController {
         view.addSubview(beginButton)
         view.addSubview(beginButtonDown)
     }
+    
+    // MARK: - Private Methods
 
     @objc private func alertAction() {
         let alert = UIAlertController(title: "Введите ваше слово", message: nil, preferredStyle: .alert)

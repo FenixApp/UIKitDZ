@@ -4,7 +4,7 @@
 import Foundation
 import UIKit
 
-// Модель
+/// Модель
 struct Word {
     func getWord(word: String) -> String {
         String(word.reversed())
