@@ -4,7 +4,9 @@
 import UIKit
 
 /// Настройки карточки человека
-class SettingsViewController: UIViewController {
+final class SettingsViewController: UIViewController {
+    // MARK: - Private Properties
+
     private let agePickerData = [
         1,
         2,
@@ -50,7 +52,7 @@ class SettingsViewController: UIViewController {
         return button
     }()
 
-    let addButton: UIButton = {
+    private let addButton: UIButton = {
         let button = UIButton(type: .system)
         button.frame = CGRect(x: 330, y: 20, width: 50, height: 20)
         button.setTitle("Add", for: .normal)
@@ -215,7 +217,6 @@ class SettingsViewController: UIViewController {
 
         setElements()
 
-        // Write toolbar code for done button
         let toolBar = UIToolbar()
         toolBar.barStyle = .default
         toolBar.isTranslucent = true
@@ -232,8 +233,9 @@ class SettingsViewController: UIViewController {
         birthdayTextField.inputAccessoryView = toolBar
         ageTextField.inputAccessoryView = toolBar
         genderTextField.inputAccessoryView = toolBar
-        // Change your TextField name here
     }
+
+    // MARK: - Public Methods
 
     func setElements() {
         view.addSubview(cancelButton)
@@ -286,6 +288,8 @@ class SettingsViewController: UIViewController {
         present(alertController, animated: true, completion: nil)
     }
 }
+
+// MARK: - Extensions
 
 extension SettingsViewController: UIPickerViewDelegate, UIPickerViewDataSource {
     func numberOfComponents(in pickerView: UIPickerView) -> Int {

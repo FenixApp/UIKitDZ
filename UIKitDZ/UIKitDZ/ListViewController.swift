@@ -4,7 +4,9 @@
 import UIKit
 
 /// Экран со списком людей и напоминанием об их Дне Рождения
-class ListViewController: UIViewController {
+final class ListViewController: UIViewController {
+    // MARK: - Private Properties
+
     private let helenaImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Helena")
@@ -142,13 +144,13 @@ class ListViewController: UIViewController {
         view.backgroundColor = .white
 
         navigationItem.title = "Birthday Reminder"
-//        navigationItem.rightBarButtonItem = UIBarButtonItem(image: UIImage(systemName: "Plus"), style: .done, target:
-//        self, action: #selector(addSettings))
         let addBarButton = UIBarButtonItem(barButtonSystemItem: .add, target: self, action: #selector(addSettings))
         navigationItem.rightBarButtonItem = addBarButton
 
         setElements()
     }
+
+    // MARK: - Private Methods
 
     private func setElements() {
         view.addSubview(helenaImage)

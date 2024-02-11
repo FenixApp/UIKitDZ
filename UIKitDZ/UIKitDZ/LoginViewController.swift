@@ -4,7 +4,9 @@
 import UIKit
 
 /// Экран с вводом логина и пароля
-class LoginViewController: UIViewController {
+final class LoginViewController: UIViewController {
+    // MARK: - Private Properties
+
     private let calendarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Birthday")
@@ -123,6 +125,8 @@ class LoginViewController: UIViewController {
         setElements()
         statusTextFields()
     }
+
+    // MARK: - Private Methods
 
     private func setElements() {
         view.addSubview(calendarImage)
