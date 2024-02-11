@@ -69,12 +69,13 @@ class LoginViewController: UIViewController {
         textField.attributedPlaceholder = .init(string: "Typing password")
         textField.frame = CGRect(x: 20, y: 400, width: 175, height: 17)
         textField.font = UIFont(name: "Verdana", size: 14)
+        textField.isSecureTextEntry = true
         return textField
     }()
 
     private lazy var eyeButton: UIButton = {
         let button = UIButton()
-//        button.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(eyeButtonTapped), for: .touchUpInside)
         button.setImage(UIImage(systemName: "eye.slash.fill"), for: .normal)
         button.tintColor = .lightGray
         button.frame = CGRect(x: 340, y: 400, width: 22, height: 19)
@@ -110,7 +111,7 @@ class LoginViewController: UIViewController {
         let button = UIButton()
         button.layer.cornerRadius = 12
         button.tintColor = .white
-//        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
+        button.addTarget(self, action: #selector(loginButtonTapped), for: .touchUpInside)
         button.titleLabel?.font = .systemFont(ofSize: 16)
         button.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 0.4)
         button.setTitle("Login", for: .normal)
@@ -157,5 +158,23 @@ class LoginViewController: UIViewController {
         switchLabel.isHidden = false
         switchFaceID.isHidden = false
         loginButton.layer.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 1).cgColor
+    }
+
+    @objc func eyeButtonTapped(_ sender: UIButton) {
+        passwordTextField.isSecureTextEntry.toggle()
+        if passwordTextField.isSecureTextEntry {
+            if let image = UIImage(systemName: "eye.slash.fill") {
+                sender.setImage(image, for: .normal)
+            }
+        } else {
+            if let image = UIImage(systemName: "eye.fill") {
+                sender.setImage(image, for: .normal)
+            }
+        }
+    }
+
+    @objc func loginButtonTapped() {
+        let listViewController = ListViewController()
+        navigationController?.pushViewController(listViewController, animated: true)
     }
 }

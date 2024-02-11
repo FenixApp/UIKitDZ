@@ -14,8 +14,13 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     ) {
         guard let windowScene = (scene as? UIWindowScene) else { return }
 
+        let loginVC = LoginViewController()
+        let navigationVC = UINavigationController()
+        let listVC = ListViewController()
+
         let window = UIWindow(windowScene: windowScene)
-        window.rootViewController = LoginViewController()
+        window.rootViewController = navigationVC
+        navigationVC.pushViewController(listVC, animated: true)
         window.makeKeyAndVisible()
         self.window = window
         window.backgroundColor = .white
