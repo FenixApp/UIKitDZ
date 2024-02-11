@@ -170,6 +170,8 @@ class ListViewController: UIViewController {
     }
 
     @objc func addSettings() {
-        print("Click")
+        let settingsVC = SettingsViewController()
+        settingsVC.modalPresentationStyle = .automatic
+        present(settingsVC, animated: true)
     }
 }
