@@ -16,11 +16,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
 
         let loginVC = LoginViewController()
         let navigationVC = UINavigationController()
-        let listVC = ListViewController()
 
         let window = UIWindow(windowScene: windowScene)
         window.rootViewController = navigationVC
-        navigationVC.pushViewController(listVC, animated: true)
+        navigationVC.pushViewController(loginVC, animated: true)
         window.makeKeyAndVisible()
         self.window = window
         window.backgroundColor = .white
