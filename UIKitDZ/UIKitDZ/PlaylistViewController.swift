@@ -6,81 +6,40 @@ import UIKit
 
 /// Экран со списком музыкальных композиций
 final class PlaylistViewController: UIViewController {
-    // MARK: - IBOutlets
-
-    @IBOutlet var twoDescription: UILabel!
-    @IBOutlet var twoTitle: UILabel!
-    @IBOutlet var twoImage: UIImageView!
-    @IBOutlet var oneDescription: UILabel!
-    @IBOutlet var oneTitle: UILabel!
-    @IBOutlet var oneImage: UIImageView!
-
-    // MARK: - Private Properties
-
-    private var musicOne = Music(
-        image: "Artists",
-        title: "DIARO",
-        description: "On The Way",
-        time: "04:30",
-        nameMusic: "01 On The Way"
-    )
-    private var musicTwo = Music(
-        image: "Queen",
-        title: "Demeter",
-        description: "Utopia",
-        time: "03:49",
-        nameMusic: "01 Utopia"
-    )
-
-    // MARK: - Override Methods
-
+    private var player = AVAudioPlayer()
+    @IBOutlet var durationLabelLetItBe: UILabel!
+    @IBOutlet var durationLabelYesterday: UILabel!
     override func viewDidLoad() {
         super.viewDidLoad()
-        oneImage.image = UIImage(named: "Artists")
-        oneTitle.text = musicOne.title
-        oneDescription.text = musicOne.description
-        twoImage.image = UIImage(named: "Queen")
-        twoTitle.text = musicTwo.title
-        twoDescription.text = musicTwo.description
+
+        for audio in ["OnTheWay", "Utopia"] {
+            do {
+                if let audioPath = Bundle.main.path(forResource: audio, ofType: "mp3") {
+                    try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+                }
+            } catch {
+                print("Error")
+            }
+
+            if audio == "OnTheWay" {
+                let duration = Int(player.duration)
+                if duration % 60 > 10 {
+                    durationLabelLetItBe.text = "0\(duration / 60):\(duration % 60)"
+                } else {
+                    durationLabelLetItBe.text = "0\(duration / 60):0\(duration % 60)"
+                }
+            } else {
+                let duration = Int(player.duration)
+                if duration % 60 > 10 {
+                    durationLabelYesterday.text = "0\(duration / 60):\(duration % 60)"
+                } else {
+                    durationLabelYesterday.text = "0\(duration / 60):0\(duration % 60)"
+                }
+            }
+        }
     }
 
-    // MARK: - IBAction
+    @IBAction func letItBeButton(_ sender: Any) {}
 
-    @IBAction func showFirstSong(_ sender: Any) {
-        transitionToMusic(music: Music(
-            image: "Artists",
-            title: "DIARO",
-            description: "On The Way",
-            time: "04:30",
-            nameMusic: "01 On The Way"
-        ))
-    }
-
-    @IBAction func showTwoSong(_ sender: Any) {
-        transitionToMusic(music: Music(
-            image: "Queen",
-            title: "Demeter",
-            description: "Utopia",
-            time: "03:49",
-            nameMusic: "01 Utopia"
-        ))
-    }
-
-    // MARK: - Private Methods
-
-    private func transitionToMusic(music: Music) {
-        let storyboard = UIStoryboard(name: "Main", bundle: nil)
-        guard let musicViewController = storyboard
-            .instantiateViewController(withIdentifier: "MusicViewController") as? MusicViewController else { return }
-        musicViewController.music = Music(
-            image: music.image,
-            title: music.title,
-            description: music.description,
-            time: music.time,
-            nameMusic: music.nameMusic
-        )
-
-        musicViewController.modalPresentationStyle = .formSheet
-        present(musicViewController, animated: true)
-    }
+    @IBAction func yesterdayButton(_ sender: Any) {}
 }

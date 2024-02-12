@@ -6,59 +6,62 @@ import UIKit
 
 /// Экран с музыкальной композицией
 final class MusicViewController: UIViewController {
-    // MARK: - IBOutlets
-
-    @IBOutlet var playButton: UIButton!
-    @IBOutlet var currentValueLabel: UILabel!
-    @IBOutlet var musicSlider: UISlider!
-    @IBOutlet var musicDescriptionLabel: UILabel!
-    @IBOutlet var musicTitleLabel: UILabel!
-    @IBOutlet var musicImageView: UIImageView!
-
     private var player = AVAudioPlayer()
+    @IBOutlet var volumeSlider: UISlider!
+    @IBOutlet var playButtonOutlet: UIButton!
+    @IBOutlet var slider: UISlider!
+    @IBOutlet var timeLabel: UILabel!
     var timer: Timer?
-    var music: Music?
 
     override func viewDidLoad() {
-        super.viewDidLoad()
-        musicImageView.image = UIImage(named: music?.image ?? "nil")
-        musicTitleLabel.text = music?.title
-        musicDescriptionLabel.text = music?.description
-    }
-
-    // MARK: - IBAction
-
-    @IBAction func playButtonTapped(_ sender: UIButton) {
-        playButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
-    }
-
-    @IBAction func closeButton(_ sender: UIButton) {
-        dismiss(animated: true)
-    }
-
-    private func setMusic() {
-        guard let music = music else { return }
-        musicImageView.image = UIImage(named: music.image)
-        musicTitleLabel.text = music.title
-        musicDescriptionLabel.text = music.description
-    }
-
-    // MARK: - Private Methods
-
-    private func setPlayer() {
-        if player.isPlaying {
-            playButton.setImage(UIImage(systemName: "stop.circle"), for: .normal)
-            player.stop()
-        } else {
-            playButton.setImage(UIImage(systemName: "play.circle"), for: .normal)
-            guard let pathAudio = Bundle.main.path(forResource: music?.nameMusic, ofType: "mp3") else { return }
-
-            do {
-                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: pathAudio))
-                player.play()
-            } catch {
-                print("Error")
+        volumeSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
+        do {
+            if let audioPath = Bundle.main.path(forResource: "OnTheWay", ofType: "mp3") {
+                try player = AVAudioPlayer(contentsOf: URL(fileURLWithPath: audioPath))
+                slider.maximumValue = Float(player.duration)
             }
+        } catch {
+            print("Error")
         }
+        timer = Timer.scheduledTimer(
+            timeInterval: 0.1,
+            target: self,
+            selector: #selector(updateSlider),
+            userInfo: nil,
+            repeats: true
+        )
+        player.play()
+        playButtonOutlet.setImage(UIImage(named: "pause.circle"), for: .normal)
+    }
+
+    @IBAction func playButton(_ sender: Any) {
+        if player.isPlaying {
+            player.pause()
+            playButtonOutlet.setImage(UIImage(named: "playPouse"), for: .normal)
+        } else {
+            player.play()
+            playButtonOutlet.setImage(UIImage(named: "pause.circle"), for: .normal)
+        }
+    }
+
+    @IBAction func playerSlider(_ sender: Any) {
+        player.currentTime = TimeInterval(slider.value)
+    }
+
+    @IBAction func sliderAction(_ sender: Any) {
+        player.volume = volumeSlider.value
+    }
+
+    @IBAction func closeButton(_ sender: Any) {
+        dismiss(animated: true, completion: nil)
+        player.pause()
+    }
+
+    @objc func updateSlider() {
+        slider.value = Float(player.currentTime)
+        let remainingTime = player.duration - player.currentTime
+        let minutes = Int(remainingTime) / 60
+        let seconds = Int(remainingTime) % 60
+        timeLabel.text = "-\(String(format: "%02d:%02d", minutes, seconds))"
     }
 }

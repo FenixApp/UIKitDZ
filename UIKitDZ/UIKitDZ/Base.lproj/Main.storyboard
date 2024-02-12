@@ -16,11 +16,11 @@
                         <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-qx-bs0">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Beatles" translatesAutoresizingMaskIntoConstraints="NO" id="jCa-qx-bs0">
                                 <rect key="frame" x="16" y="118" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
-                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="zLP-tQ-7x8">
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Queen" translatesAutoresizingMaskIntoConstraints="NO" id="zLP-tQ-7x8">
                                 <rect key="frame" x="16" y="221" width="75" height="75"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                             </imageView>
@@ -117,21 +117,22 @@
                                 <nil key="highlightedColor"/>
                             </label>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="WYO-kM-e7V">
-                                <rect key="frame" x="16" y="118" width="301" height="65"/>
+                                <rect key="frame" x="8" y="116" width="361" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="showFirstSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="a7U-hK-Yyc"/>
+                                    <action selector="yesterdayButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="Hjs-xZ-Zaj"/>
                                 </connections>
                             </button>
                             <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dcs-hU-XGX">
-                                <rect key="frame" x="16" y="221" width="301" height="77"/>
+                                <rect key="frame" x="16" y="220" width="361" height="77"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <state key="normal" title="Button"/>
                                 <buttonConfiguration key="configuration" style="plain"/>
                                 <connections>
-                                    <action selector="showTwoSong:" destination="BYZ-38-t0r" eventType="touchUpInside" id="maA-Hc-vPD"/>
+                                    <action selector="letItBeButton:" destination="BYZ-38-t0r" eventType="touchUpInside" id="5sS-aI-REc"/>
+                                    <segue destination="29f-C4-fwt" kind="show" id="wKn-fK-P4V"/>
                                 </connections>
                             </button>
                         </subviews>
@@ -139,12 +140,8 @@
                         <color key="backgroundColor" red="0.28235294117647058" green="0.22352941176470587" blue="0.44313725490196076" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     </view>
                     <connections>
-                        <outlet property="oneDescription" destination="iuN-tu-nFY" id="WBI-r8-568"/>
-                        <outlet property="oneImage" destination="jCa-qx-bs0" id="800-3e-aYg"/>
-                        <outlet property="oneTitle" destination="ixD-B7-DOR" id="GCH-tZ-Wjm"/>
-                        <outlet property="twoDescription" destination="3IR-hv-nyQ" id="nsO-5w-tW1"/>
-                        <outlet property="twoImage" destination="zLP-tQ-7x8" id="oLY-6c-pOm"/>
-                        <outlet property="twoTitle" destination="Yqb-Ui-G0O" id="LH1-CF-PUM"/>
+                        <outlet property="durationLabelLetItBe" destination="exK-Xw-CnC" id="n7b-44-pWO"/>
+                        <outlet property="durationLabelYesterday" destination="Ajm-ld-j4K" id="Ubg-md-NUI"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
@@ -156,7 +153,7 @@
             <objects>
                 <viewController storyboardIdentifier="MusicViewController" useStoryboardIdentifierAsRestorationIdentifier="YES" id="29f-C4-fwt" customClass="MusicViewController" customModule="UIKitDZ" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="mBy-MX-6c0">
-                        <rect key="frame" x="0.0" y="0.0" width="393" height="852"/>
+                        <rect key="frame" x="0.0" y="0.0" width="393" height="783"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Background" translatesAutoresizingMaskIntoConstraints="NO" id="phn-Z1-RGT">
@@ -167,7 +164,7 @@
                                 <rect key="frame" x="0.0" y="498" width="393" height="289"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <subviews>
-                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="9d3-Ri-tVs">
+                                    <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" image="Queen" translatesAutoresizingMaskIntoConstraints="NO" id="9d3-Ri-tVs">
                                         <rect key="frame" x="20" y="20" width="90" height="90"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                     </imageView>
@@ -189,6 +186,9 @@
                                         <rect key="frame" x="18" y="130" width="282" height="30"/>
                                         <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                         <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <action selector="playerSlider:" destination="29f-C4-fwt" eventType="valueChanged" id="zh0-hV-S5V"/>
+                                        </connections>
                                     </slider>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="-02:30" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q9D-Nc-QZJ">
                                         <rect key="frame" x="321" y="134" width="56" height="20"/>
@@ -206,7 +206,7 @@
                                             <backgroundConfiguration key="background" image="play.circle" catalog="system"/>
                                         </buttonConfiguration>
                                         <connections>
-                                            <action selector="playButtonTapped:" destination="29f-C4-fwt" eventType="touchUpInside" id="jJX-ps-nxK"/>
+                                            <action selector="playButton:" destination="29f-C4-fwt" eventType="touchUpInside" id="p2h-Og-MnD"/>
                                         </connections>
                                     </button>
                                     <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="RHt-J7-p4W">
@@ -242,26 +242,34 @@
                                     <action selector="closeButton:" destination="29f-C4-fwt" eventType="touchUpInside" id="iKe-AI-UI8"/>
                                 </connections>
                             </button>
+                            <slider opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" value="0.5" minValue="0.0" maxValue="1" translatesAutoresizingMaskIntoConstraints="NO" id="fP8-tH-RnY">
+                                <rect key="frame" x="-15" y="253" width="118" height="30"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <action selector="sliderAction:" destination="29f-C4-fwt" eventType="valueChanged" id="vZF-z9-Ko4"/>
+                                </connections>
+                            </slider>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="Ov5-EU-1w2"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                     </view>
+                    <navigationItem key="navigationItem" id="haO-IZ-JZh"/>
                     <connections>
-                        <outlet property="currentValueLabel" destination="Q9D-Nc-QZJ" id="hsM-kF-GLr"/>
-                        <outlet property="musicDescriptionLabel" destination="0ze-uc-8E9" id="VGd-2U-eir"/>
-                        <outlet property="musicImageView" destination="9d3-Ri-tVs" id="v4f-Ns-7QZ"/>
-                        <outlet property="musicSlider" destination="Mwg-7U-vY3" id="5d8-SD-ezo"/>
-                        <outlet property="musicTitleLabel" destination="sA9-R2-3Ei" id="rF2-Bc-bLn"/>
-                        <outlet property="playButton" destination="VgC-tz-fMY" id="95J-Uv-KBE"/>
+                        <outlet property="playButtonOutlet" destination="VgC-tz-fMY" id="cFq-3U-7hL"/>
+                        <outlet property="slider" destination="Mwg-7U-vY3" id="waJ-ij-Cbi"/>
+                        <outlet property="timeLabel" destination="Q9D-Nc-QZJ" id="PFe-pg-4Bs"/>
+                        <outlet property="volumeSlider" destination="fP8-tH-RnY" id="DXo-dL-pty"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="Sy3-Si-QJ0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="884.73282442748086" y="-87.323943661971839"/>
+            <point key="canvasLocation" x="1094" y="-87"/>
         </scene>
     </scenes>
     <resources>
         <image name="Background" width="375" height="763"/>
+        <image name="Beatles" width="75" height="75"/>
+        <image name="Queen" width="75" height="75"/>
         <image name="backward.end.fill" catalog="system" width="128" height="101"/>
         <image name="forward.end.fill" catalog="system" width="128" height="101"/>
         <image name="play.circle" catalog="system" width="128" height="123"/>
