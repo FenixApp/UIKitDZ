@@ -5,40 +5,9 @@ import UIKit
 
 /// Настройки карточки человека
 final class SettingsViewController: UIViewController {
-    
     // MARK: - Private Properties
-    private let agePickerData = [
-        1,
-        2,
-        3,
-        4,
-        5,
-        6,
-        7,
-        8,
-        9,
-        10,
-        11,
-        12,
-        13,
-        14,
-        15,
-        16,
-        17,
-        18,
-        19,
-        20,
-        21,
-        22,
-        23,
-        24,
-        25,
-        26,
-        27,
-        28,
-        29,
-        30
-    ]
+
+    private let agePickerData = Array(1...30)
     private let agePickerView = UIPickerView()
     private let genderPickerData = ["Male", "Female"]
     private let genderPickerView = UIPickerView()
@@ -197,7 +166,7 @@ final class SettingsViewController: UIViewController {
         datePicker.timeZone = TimeZone.current
         return datePicker
     }()
-
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         super.viewDidLoad()
         view.backgroundColor = .white
@@ -235,8 +204,9 @@ final class SettingsViewController: UIViewController {
         genderTextField.inputAccessoryView = toolBar
     }
 
-    // MARK: - Public Methods
-    func setElements() {
+    // MARK: - Private Methods
+
+    private func setElements() {
         view.addSubview(cancelButton)
         view.addSubview(addButton)
         view.addSubview(photoImageView)
@@ -258,21 +228,21 @@ final class SettingsViewController: UIViewController {
         view.addSubview(telegramUnderView)
     }
 
-    @objc func cancelButtonTapped() {
+    @objc private func cancelButtonTapped() {
         dismiss(animated: true)
     }
 
-    @objc func handleDatePicker(sender: UIDatePicker) {
+    @objc private func handleDatePicker(sender: UIDatePicker) {
         let dateFormatter = DateFormatter()
         dateFormatter.dateFormat = "dd MMM yyyy"
         birthdayTextField.text = dateFormatter.string(from: sender.date)
     }
 
-    @objc func onClickDoneButton() {
+    @objc private func onClickDoneButton() {
         view.endEditing(true)
     }
 
-    @objc func alertMessageTelegram() {
+    @objc private func alertMessageTelegram() {
         let alertController = UIAlertController(title: "Please enter Telegram", message: nil, preferredStyle: .alert)
         let alertCancel = UIAlertAction(title: "Cancel", style: .cancel)
         let alertAction = UIAlertAction(title: "OK", style: .default) { _ in

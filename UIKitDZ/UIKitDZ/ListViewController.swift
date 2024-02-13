@@ -5,8 +5,8 @@ import UIKit
 
 /// Экран со списком людей и напоминанием об их Дне Рождения
 final class ListViewController: UIViewController {
-    
     // MARK: - Private Properties
+
     private let helenaImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Helena")
@@ -151,6 +151,7 @@ final class ListViewController: UIViewController {
     }
 
     // MARK: - Private Methods
+
     private func setElements() {
         view.addSubview(helenaImage)
         view.addSubview(helenaLabel)

@@ -5,8 +5,8 @@ import UIKit
 
 /// Экран с вводом логина и пароля
 final class LoginViewController: UIViewController {
-    
     // MARK: - Private Properties
+
     private let calendarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Birthday")
@@ -120,13 +120,14 @@ final class LoginViewController: UIViewController {
         button.frame = CGRect(x: 20, y: 700, width: 345, height: 44)
         return button
     }()
-
+    // MARK: - Life Cycle
     override func viewDidLoad() {
         setElements()
-        statusTextFields()
+        addTargetsToTextFields()
     }
 
     // MARK: - Private Methods
+
     private func setElements() {
         view.addSubview(calendarImage)
         view.addSubview(birthdayLabel)
@@ -143,7 +144,7 @@ final class LoginViewController: UIViewController {
         view.addSubview(loginButton)
     }
 
-    private func statusTextFields() {
+    private func addTargetsToTextFields() {
         emailTextField.addTarget(self, action: #selector(changedTextFields), for: .editingChanged)
         passwordTextField.addTarget(self, action: #selector(changedTextFields), for: .editingChanged)
     }
@@ -163,7 +164,7 @@ final class LoginViewController: UIViewController {
         loginButton.layer.backgroundColor = UIColor(red: 233 / 255, green: 70 / 255, blue: 94 / 255, alpha: 1).cgColor
     }
 
-    @objc func eyeButtonTapped(_ sender: UIButton) {
+    @objc private func eyeButtonTapped(_ sender: UIButton) {
         passwordTextField.isSecureTextEntry.toggle()
         if passwordTextField.isSecureTextEntry {
             if let image = UIImage(systemName: "eye.slash.fill") {
@@ -176,7 +177,7 @@ final class LoginViewController: UIViewController {
         }
     }
 
-    @objc func loginButtonTapped() {
+    @objc private func loginButtonTapped() {
         let listViewController = ListViewController()
         navigationController?.pushViewController(listViewController, animated: true)
     }
