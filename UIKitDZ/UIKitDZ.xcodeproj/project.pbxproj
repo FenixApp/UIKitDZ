@@ -7,19 +7,25 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C473374A2B79478F0081E4F8 /* MusicViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47337492B79478F0081E4F8 /* MusicViewController.swift */; };
+		C473374C2B7948DC0081E4F8 /* OnTheWay.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C473374B2B7948DC0081E4F8 /* OnTheWay.mp3 */; };
+		C473374E2B7948F50081E4F8 /* Utopia.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = C473374D2B7948F50081E4F8 /* Utopia.mp3 */; };
 		C47BD3842B715528000D549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3832B715528000D549B /* AppDelegate.swift */; };
 		C47BD3862B715528000D549B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3852B715528000D549B /* SceneDelegate.swift */; };
-		C47BD3882B715528000D549B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3872B715528000D549B /* ViewController.swift */; };
+		C47BD3882B715528000D549B /* PlaylistViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3872B715528000D549B /* PlaylistViewController.swift */; };
 		C47BD38B2B715528000D549B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47BD3892B715528000D549B /* Main.storyboard */; };
 		C47BD38D2B715529000D549B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47BD38C2B715529000D549B /* Assets.xcassets */; };
 		C47BD3902B715529000D549B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47BD38E2B715529000D549B /* LaunchScreen.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C47337492B79478F0081E4F8 /* MusicViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MusicViewController.swift; sourceTree = "<group>"; };
+		C473374B2B7948DC0081E4F8 /* OnTheWay.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = OnTheWay.mp3; sourceTree = "<group>"; };
+		C473374D2B7948F50081E4F8 /* Utopia.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = Utopia.mp3; sourceTree = "<group>"; };
 		C47BD3802B715528000D549B /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47BD3832B715528000D549B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C47BD3852B715528000D549B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C47BD3872B715528000D549B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
+		C47BD3872B715528000D549B /* PlaylistViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaylistViewController.swift; sourceTree = "<group>"; };
 		C47BD38A2B715528000D549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C47BD38C2B715529000D549B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C47BD38F2B715529000D549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
@@ -58,11 +64,14 @@
 			children = (
 				C47BD3832B715528000D549B /* AppDelegate.swift */,
 				C47BD3852B715528000D549B /* SceneDelegate.swift */,
-				C47BD3872B715528000D549B /* ViewController.swift */,
+				C47BD3872B715528000D549B /* PlaylistViewController.swift */,
+				C47337492B79478F0081E4F8 /* MusicViewController.swift */,
 				C47BD3892B715528000D549B /* Main.storyboard */,
 				C47BD38C2B715529000D549B /* Assets.xcassets */,
 				C47BD38E2B715529000D549B /* LaunchScreen.storyboard */,
 				C47BD3912B715529000D549B /* Info.plist */,
+				C473374B2B7948DC0081E4F8 /* OnTheWay.mp3 */,
+				C473374D2B7948F50081E4F8 /* Utopia.mp3 */,
 			);
 			path = UIKitDZ;
 			sourceTree = "<group>";
@@ -128,8 +137,10 @@
 			buildActionMask = 2147483647;
 			files = (
 				C47BD3902B715529000D549B /* LaunchScreen.storyboard in Resources */,
+				C473374E2B7948F50081E4F8 /* Utopia.mp3 in Resources */,
 				C47BD38D2B715529000D549B /* Assets.xcassets in Resources */,
 				C47BD38B2B715528000D549B /* Main.storyboard in Resources */,
+				C473374C2B7948DC0081E4F8 /* OnTheWay.mp3 in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -183,7 +194,8 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47BD3882B715528000D549B /* ViewController.swift in Sources */,
+				C47BD3882B715528000D549B /* PlaylistViewController.swift in Sources */,
+				C473374A2B79478F0081E4F8 /* MusicViewController.swift in Sources */,
 				C47BD3842B715528000D549B /* AppDelegate.swift in Sources */,
 				C47BD3862B715528000D549B /* SceneDelegate.swift in Sources */,
 			);
