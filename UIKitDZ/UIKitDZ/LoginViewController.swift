@@ -5,8 +5,8 @@ import UIKit
 
 /// Экран с вводом логина и пароля
 final class LoginViewController: UIViewController {
+    
     // MARK: - Private Properties
-
     private let calendarImage: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: "Birthday")
@@ -127,7 +127,6 @@ final class LoginViewController: UIViewController {
     }
 
     // MARK: - Private Methods
-
     private func setElements() {
         view.addSubview(calendarImage)
         view.addSubview(birthdayLabel)

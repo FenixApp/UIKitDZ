@@ -5,8 +5,8 @@ import UIKit
 
 /// Настройки карточки человека
 final class SettingsViewController: UIViewController {
+    
     // MARK: - Private Properties
-
     private let agePickerData = [
         1,
         2,
@@ -236,7 +236,6 @@ final class SettingsViewController: UIViewController {
     }
 
     // MARK: - Public Methods
-
     func setElements() {
         view.addSubview(cancelButton)
         view.addSubview(addButton)
