@@ -6,12 +6,18 @@ import UIKit
 
 /// Экран с музыкальной композицией
 final class MusicViewController: UIViewController {
+    
+    // MARK: - Private Properties
     private var player = AVAudioPlayer()
+    
+    // MARK: - Public Properties
+    var timer: Timer?
+    
+    // MARK: - IBOutlets
     @IBOutlet var volumeSlider: UISlider!
     @IBOutlet var playButtonOutlet: UIButton!
     @IBOutlet var slider: UISlider!
     @IBOutlet var timeLabel: UILabel!
-    var timer: Timer?
 
     override func viewDidLoad() {
         volumeSlider.transform = CGAffineTransform(rotationAngle: CGFloat(-Double.pi / 2))
@@ -34,6 +40,7 @@ final class MusicViewController: UIViewController {
         playButtonOutlet.setImage(UIImage(named: "pause.circle"), for: .normal)
     }
 
+    // MARK: - IBActions
     @IBAction func playButton(_ sender: Any) {
         if player.isPlaying {
             player.pause()
@@ -56,8 +63,8 @@ final class MusicViewController: UIViewController {
         dismiss(animated: true, completion: nil)
         player.pause()
     }
-
-    @objc func updateSlider() {
+    // MARK: - Private Methods
+    @objc private func updateSlider() {
         slider.value = Float(player.currentTime)
         let remainingTime = player.duration - player.currentTime
         let minutes = Int(remainingTime) / 60

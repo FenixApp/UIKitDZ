@@ -6,9 +6,14 @@ import UIKit
 
 /// Экран со списком музыкальных композиций
 final class PlaylistViewController: UIViewController {
+    
+    // MARK: - Private Properties
     private var player = AVAudioPlayer()
+    
+    // MARK: - IBOutlets
     @IBOutlet var durationLabelLetItBe: UILabel!
     @IBOutlet var durationLabelYesterday: UILabel!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -38,7 +43,7 @@ final class PlaylistViewController: UIViewController {
             }
         }
     }
-
+        // MARK: - IBActions
     @IBAction func letItBeButton(_ sender: Any) {}
 
     @IBAction func yesterdayButton(_ sender: Any) {}
