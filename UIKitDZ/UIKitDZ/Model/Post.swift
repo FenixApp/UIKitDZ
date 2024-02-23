@@ -1,19 +1,12 @@
-// Posts.swift
+// Post.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
 /// Пост
 struct Post {
-    let nickname: String
-    let photo: UIImage
-    let pictures: [UIImage]
+    let nickName: String
+    let photoImage: UIImage
+    let picturesImage: [UIImage]
     let timeText: String
-}
-
-/// Уведомление
-struct Notification {
-    let text: String
-    let avatar: UIImage
-    let picture: UIImage
 }

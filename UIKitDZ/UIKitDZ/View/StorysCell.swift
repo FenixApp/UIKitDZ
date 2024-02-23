@@ -3,102 +3,95 @@
 
 import UIKit
 
-/// StorisCell
-class StorysCell: UITableViewCell {
-    // MARK: - Types
-
+/// Ячейка с историями
+final class StorysCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
-        static let myPhoto = "myPhoto"
+        static let identifier = "StorysCell"
+        static let mainPhoto = "mainPhoto"
+        static let mainTitle = "Ваша история"
         static let userPhoto = "userPhoto"
-        static let yourStoryText = "Ваша история"
-        static let userNickname = "lavanda123"
-        static let commentText = "Комментировать..."
-        static let commentImage = "comment"
-        static let exportImage = "export"
-        static let saveImage = "save"
-        static let myNickname = "rus1asha"
-        static let turNickname = "tur_v_dagestan"
-        static let likesText = "Нравится: 201"
-        static let descriptionText = "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
-        static let verdanaBold18 = UIFont(name: "Verdana-Bold", size: 18)
-        static let verdanaBold16 = UIFont(name: "Verdana-Bold", size: 16)
-        static let verdanaBold26 = UIFont(name: "Verdana-Bold", size: 26)
-        static let verdanaBold12 = UIFont(name: "Verdana-Bold", size: 12)
-        static let verdanaBold10 = UIFont(name: "Verdana-Bold", size: 10)
-        static let verdanaBold14 = UIFont(name: "Verdana-Bold", size: 14)
-        static let verdana16 = UIFont(name: "Verdana", size: 16)
-        static let verdana14 = UIFont(name: "Verdana", size: 14)
-        static let verdana12 = UIFont(name: "Verdana", size: 12)
-        static let verdana10 = UIFont(name: "Verdana", size: 10)
-        static let verdana8 = UIFont(name: "Verdana", size: 8)
+        static let userTitle = "lavanda123"
+        static let verdanaSize10 = UIFont(name: "Verdana", size: 10)
     }
-
-    // MARK: - IBOutlets
 
     // MARK: - Visual Components
 
-    private let myPhotoImageView: UIImageView = {
+    private let storysScrollView: UIScrollView = {
+        let scrollView = UIScrollView()
+        scrollView.isScrollEnabled = true
+        scrollView.showsHorizontalScrollIndicator = false
+        scrollView.translatesAutoresizingMaskIntoConstraints = false
+        return scrollView
+    }()
+
+    private let coreView: UIView = {
+        let coreView = UIView()
+        coreView.translatesAutoresizingMaskIntoConstraints = false
+        return coreView
+    }()
+
+    private let mainImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.myPhoto)
+        imageView.image = UIImage(named: Constants.mainPhoto)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let youStoryLabel: UILabel = {
+    private let mainLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.yourStoryText
-        label.font = Constants.verdana8
+        label.text = Constants.mainTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let firstUserPhotoImageView: UIImageView = {
+    private let oneUserPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.userPhoto)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let firstUserNickNameLabel: UILabel = {
+    private let oneUserTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.userNickname
-        label.font = Constants.verdana8
+        label.text = Constants.userTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let secondUserPhotoImageView: UIImageView = {
+    private let twoUserPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.userPhoto)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let secondUserNickNameLabel: UILabel = {
+    private let twoUserTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.userNickname
-        label.font = Constants.verdana8
+        label.text = Constants.userTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let thridUserPhotoImageView: UIImageView = {
+    private let threeUserPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.userPhoto)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let thridUserNickNameLabel: UILabel = {
+    private let threeUserTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.userNickname
-        label.font = Constants.verdana8
+        label.text = Constants.userTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -111,10 +104,10 @@ class StorysCell: UITableViewCell {
         return imageView
     }()
 
-    private let fourUserNickNameLabel: UILabel = {
+    private let fourUserTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.userNickname
-        label.font = Constants.verdana8
+        label.text = Constants.userTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -127,32 +120,21 @@ class StorysCell: UITableViewCell {
         return imageView
     }()
 
-    private let fiveUserNickNameLabel: UILabel = {
+    private let fiveUserTitleLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.userNickname
-        label.font = Constants.verdana8
+        label.text = Constants.userTitle
+        label.font = Constants.verdanaSize10
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
-    private let storyScrollView: UIScrollView = {
-        let scrollView = UIScrollView()
-        scrollView.translatesAutoresizingMaskIntoConstraints = false
-        scrollView.isScrollEnabled = true
-        scrollView.showsHorizontalScrollIndicator = true
-        return scrollView
-    }()
-
-    // MARK: - Public Properties
-
-    // MARK: - Private Properties
-
-    // MARK: - Initializers
+    // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        setupConstraints()
     }
 
     @available(*, unavailable)
@@ -160,213 +142,121 @@ class StorysCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Life Cycle
-
-    // MARK: - Public Methods
-
-    // MARK: - IBAction
-
     // MARK: - Private Methods
 
     private func setupCell() {
-        contentView.addSubview(storyScrollView)
-        storyScrollView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        storyScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
-        storyScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
-        storyScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        contentView.addSubview(storysScrollView)
+        storysScrollView.addSubview(coreView)
+        coreView.addSubview(mainImageView)
+        coreView.addSubview(mainLabel)
+        coreView.addSubview(oneUserPhotoImageView)
+        coreView.addSubview(oneUserTitleLabel)
+        coreView.addSubview(oneUserPhotoImageView)
+        coreView.addSubview(oneUserTitleLabel)
+        coreView.addSubview(twoUserTitleLabel)
+        coreView.addSubview(twoUserPhotoImageView)
+        coreView.addSubview(threeUserTitleLabel)
+        coreView.addSubview(threeUserPhotoImageView)
+        coreView.addSubview(fourUserTitleLabel)
+        coreView.addSubview(fourUserPhotoImageView)
+        coreView.addSubview(fiveUserTitleLabel)
+        coreView.addSubview(fiveUserPhotoImageView)
+    }
 
-        let insideView = UIView()
-        insideView.translatesAutoresizingMaskIntoConstraints = false
-        storyScrollView.addSubview(insideView)
+    private func setupConstraints() {
+        storysScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
+        storysScrollView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        storysScrollView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor).isActive = true
+        storysScrollView.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
 
-        insideView.leadingAnchor.constraint(equalTo: storyScrollView.leadingAnchor).isActive = true
-        insideView.trailingAnchor.constraint(equalTo: storyScrollView.trailingAnchor).isActive = true
-        insideView.topAnchor.constraint(equalTo: storyScrollView.topAnchor).isActive = true
-        insideView.bottomAnchor.constraint(equalTo: storyScrollView.bottomAnchor).isActive = true
-        insideView.heightAnchor.constraint(equalTo: storyScrollView.heightAnchor).isActive = true
-        insideView.widthAnchor.constraint(equalTo: storyScrollView.widthAnchor, multiplier: 2.0).isActive = true
+        coreView.leadingAnchor.constraint(equalTo: storysScrollView.leadingAnchor).isActive = true
+        coreView.topAnchor.constraint(equalTo: storysScrollView.topAnchor).isActive = true
+        coreView.trailingAnchor.constraint(equalTo: storysScrollView.trailingAnchor).isActive = true
+        coreView.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor).isActive = true
+        coreView.heightAnchor.constraint(equalTo: storysScrollView.heightAnchor).isActive = true
+        coreView.widthAnchor.constraint(equalTo: storysScrollView.widthAnchor, multiplier: 2.0).isActive = true
 
-        insideView.addSubview(myPhotoImageView)
-        myPhotoImageView.topAnchor.constraint(equalTo: storyScrollView.topAnchor, constant: 7).isActive = true
-        myPhotoImageView.leftAnchor.constraint(equalTo: storyScrollView.leftAnchor, constant: 12).isActive = true
-        myPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        myPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        mainImageView.leadingAnchor.constraint(equalTo: storysScrollView.leadingAnchor, constant: 12).isActive = true
+        mainImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        mainImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        mainImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-        insideView.addSubview(youStoryLabel)
-        youStoryLabel.topAnchor.constraint(equalTo: myPhotoImageView.bottomAnchor, constant: 5).isActive = true
-        youStoryLabel.leftAnchor.constraint(equalTo: storyScrollView.leftAnchor, constant: 5).isActive = true
-        youStoryLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        youStoryLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
+        mainLabel.topAnchor.constraint(equalTo: mainImageView.bottomAnchor, constant: 5).isActive = true
+        mainLabel.leadingAnchor.constraint(equalTo: storysScrollView.leadingAnchor, constant: 5).isActive = true
+        mainLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        mainLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -5).isActive = true
 
-        insideView.addSubview(firstUserPhotoImageView)
-        firstUserPhotoImageView.topAnchor.constraint(equalTo: storyScrollView.topAnchor, constant: 7).isActive = true
-        firstUserPhotoImageView.leftAnchor.constraint(
-            equalTo: myPhotoImageView.rightAnchor,
+        oneUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        oneUserPhotoImageView.leadingAnchor.constraint(equalTo: mainImageView.trailingAnchor, constant: 22)
+            .isActive = true
+        oneUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        oneUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-            constant: 22
-        ).isActive = true
-        firstUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        firstUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        oneUserTitleLabel.topAnchor.constraint(equalTo: oneUserPhotoImageView.bottomAnchor, constant: 5).isActive = true
+        oneUserTitleLabel.leadingAnchor.constraint(equalTo: mainLabel.trailingAnchor, constant: 8).isActive = true
+        oneUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        oneUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5).isActive = true
 
-        insideView.addSubview(firstUserNickNameLabel)
-        firstUserNickNameLabel.topAnchor.constraint(
-            equalTo: firstUserPhotoImageView.bottomAnchor,
+        oneUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        oneUserPhotoImageView.leadingAnchor.constraint(equalTo: mainImageView.trailingAnchor, constant: 22)
+            .isActive = true
+        oneUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        oneUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-            constant: 5
-        ).isActive = true
-        firstUserNickNameLabel.leftAnchor.constraint(equalTo: youStoryLabel.rightAnchor, constant: 8).isActive = true
-        firstUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        firstUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
+        oneUserTitleLabel.topAnchor.constraint(equalTo: oneUserPhotoImageView.bottomAnchor, constant: 5).isActive = true
+        oneUserTitleLabel.leadingAnchor.constraint(equalTo: mainLabel.trailingAnchor, constant: 8).isActive = true
+        oneUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        oneUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5).isActive = true
 
-            constant: -5
-        ).isActive = true
+        twoUserTitleLabel.topAnchor.constraint(equalTo: oneUserPhotoImageView.bottomAnchor, constant: 5).isActive = true
+        twoUserTitleLabel.leadingAnchor.constraint(equalTo: oneUserTitleLabel.trailingAnchor, constant: 8)
+            .isActive = true
+        twoUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        twoUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5).isActive = true
 
-        insideView.addSubview(firstUserPhotoImageView)
-        firstUserPhotoImageView.topAnchor.constraint(equalTo: storyScrollView.topAnchor, constant: 7).isActive = true
-        firstUserPhotoImageView.leftAnchor.constraint(
-            equalTo: myPhotoImageView.rightAnchor,
+        twoUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        twoUserPhotoImageView.leadingAnchor.constraint(equalTo: oneUserPhotoImageView.trailingAnchor, constant: 22)
+            .isActive = true
+        twoUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        twoUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-            constant: 22
-        ).isActive = true
-        firstUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        firstUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
+        threeUserTitleLabel.topAnchor.constraint(equalTo: twoUserPhotoImageView.bottomAnchor, constant: 5)
+            .isActive = true
+        threeUserTitleLabel.leadingAnchor.constraint(equalTo: twoUserTitleLabel.trailingAnchor, constant: 8)
+            .isActive = true
+        threeUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        threeUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5)
+            .isActive = true
 
-        insideView.addSubview(firstUserNickNameLabel)
-        firstUserNickNameLabel.topAnchor.constraint(
-            equalTo: firstUserPhotoImageView.bottomAnchor,
+        threeUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        threeUserPhotoImageView.leadingAnchor.constraint(equalTo: twoUserPhotoImageView.trailingAnchor, constant: 22)
+            .isActive = true
+        threeUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
+        threeUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-            constant: 5
-        ).isActive = true
-        firstUserNickNameLabel.leftAnchor.constraint(equalTo: youStoryLabel.rightAnchor, constant: 8).isActive = true
-        firstUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        firstUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
+        fourUserTitleLabel.topAnchor.constraint(equalTo: threeUserPhotoImageView.bottomAnchor, constant: 5)
+            .isActive = true
+        fourUserTitleLabel.leadingAnchor.constraint(equalTo: threeUserTitleLabel.trailingAnchor, constant: 8)
+            .isActive = true
+        fourUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        fourUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5).isActive = true
 
-            constant: -5
-        ).isActive = true
-
-        insideView.addSubview(secondUserNickNameLabel)
-        secondUserNickNameLabel.topAnchor.constraint(
-            equalTo: firstUserPhotoImageView.bottomAnchor,
-
-            constant: 5
-        ).isActive = true
-        secondUserNickNameLabel.leftAnchor.constraint(
-            equalTo: firstUserNickNameLabel.rightAnchor,
-
-            constant: 8
-        ).isActive = true
-        secondUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        secondUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
-
-            constant: -5
-        ).isActive = true
-
-        insideView.addSubview(secondUserPhotoImageView)
-        secondUserPhotoImageView.topAnchor.constraint(
-            equalTo: storyScrollView.topAnchor,
-
-            constant: 7
-        ).isActive = true
-        secondUserPhotoImageView.leftAnchor.constraint(
-            equalTo: firstUserPhotoImageView.rightAnchor,
-            constant: 22
-        ).isActive = true
-        secondUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        secondUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-
-        insideView.addSubview(thridUserNickNameLabel)
-        thridUserNickNameLabel.topAnchor.constraint(
-            equalTo: secondUserPhotoImageView.bottomAnchor,
-
-            constant: 5
-        ).isActive = true
-        thridUserNickNameLabel.leftAnchor.constraint(
-            equalTo: secondUserNickNameLabel.rightAnchor,
-
-            constant: 8
-        ).isActive = true
-        thridUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        thridUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
-
-            constant: -5
-        ).isActive = true
-
-        insideView.addSubview(thridUserPhotoImageView)
-        thridUserPhotoImageView.topAnchor.constraint(
-            equalTo: storyScrollView.topAnchor,
-
-            constant: 7
-        ).isActive = true
-        thridUserPhotoImageView.leftAnchor.constraint(
-            equalTo: secondUserPhotoImageView.rightAnchor,
-            constant: 22
-        ).isActive = true
-        thridUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
-        thridUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
-
-        insideView.addSubview(fourUserNickNameLabel)
-        fourUserNickNameLabel.topAnchor.constraint(
-            equalTo: thridUserPhotoImageView.bottomAnchor,
-
-            constant: 5
-        ).isActive = true
-        fourUserNickNameLabel.leftAnchor.constraint(
-            equalTo: thridUserNickNameLabel.rightAnchor,
-
-            constant: 8
-        ).isActive = true
-        fourUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        fourUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
-
-            constant: -5
-        ).isActive = true
-
-        insideView.addSubview(fourUserPhotoImageView)
-        fourUserPhotoImageView.topAnchor.constraint(
-            equalTo: storyScrollView.topAnchor,
-
-            constant: 7
-        ).isActive = true
-        fourUserPhotoImageView.leftAnchor.constraint(
-            equalTo: thridUserPhotoImageView.rightAnchor,
-            constant: 22
-        ).isActive = true
+        fourUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        fourUserPhotoImageView.leadingAnchor.constraint(equalTo: threeUserPhotoImageView.trailingAnchor, constant: 22)
+            .isActive = true
         fourUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         fourUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
 
-        insideView.addSubview(fiveUserNickNameLabel)
-        fiveUserNickNameLabel.topAnchor.constraint(
-            equalTo: fourUserPhotoImageView.bottomAnchor,
+        fiveUserTitleLabel.topAnchor.constraint(equalTo: fourUserPhotoImageView.bottomAnchor, constant: 5)
+            .isActive = true
+        fiveUserTitleLabel.leadingAnchor.constraint(equalTo: fourUserTitleLabel.trailingAnchor, constant: 8)
+            .isActive = true
+        fiveUserTitleLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
+        fiveUserTitleLabel.bottomAnchor.constraint(equalTo: storysScrollView.bottomAnchor, constant: -5).isActive = true
 
-            constant: 5
-        ).isActive = true
-        fiveUserNickNameLabel.leftAnchor.constraint(
-            equalTo: fourUserNickNameLabel.rightAnchor,
-
-            constant: 8
-        ).isActive = true
-        fiveUserNickNameLabel.widthAnchor.constraint(equalToConstant: 74).isActive = true
-        fiveUserNickNameLabel.bottomAnchor.constraint(
-            equalTo: storyScrollView.bottomAnchor,
-
-            constant: -5
-        ).isActive = true
-
-        insideView.addSubview(fiveUserPhotoImageView)
-        fiveUserPhotoImageView.topAnchor.constraint(
-            equalTo: storyScrollView.topAnchor,
-
-            constant: 7
-        ).isActive = true
-        fiveUserPhotoImageView.leftAnchor.constraint(
-            equalTo: fourUserPhotoImageView.rightAnchor,
-            constant: 22
-        ).isActive = true
+        fiveUserPhotoImageView.topAnchor.constraint(equalTo: storysScrollView.topAnchor, constant: 7).isActive = true
+        fiveUserPhotoImageView.leadingAnchor.constraint(equalTo: fourUserPhotoImageView.trailingAnchor, constant: 22)
+            .isActive = true
         fiveUserPhotoImageView.widthAnchor.constraint(equalToConstant: 60).isActive = true
         fiveUserPhotoImageView.heightAnchor.constraint(equalToConstant: 60).isActive = true
     }

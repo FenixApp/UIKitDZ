@@ -3,35 +3,20 @@
 
 import UIKit
 
-/// nf
-class NotificationPictureCell: UITableViewCell {
-    // MARK: - Types
-
+/// Ячейка с уведомлениями
+final class NotificationPictureCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
-        static let myPhoto = "myPhoto"
-        static let userPhoto = "userPhoto"
-        static let verdanaBold18 = UIFont(name: "Verdana-Bold", size: 18)
-        static let verdanaBold16 = UIFont(name: "Verdana-Bold", size: 16)
-        static let verdanaBold26 = UIFont(name: "Verdana-Bold", size: 26)
-        static let verdanaBold12 = UIFont(name: "Verdana-Bold", size: 12)
-        static let verdanaBold10 = UIFont(name: "Verdana-Bold", size: 10)
-        static let verdanaBold14 = UIFont(name: "Verdana-Bold", size: 14)
-        static let verdana16 = UIFont(name: "Verdana", size: 16)
-        static let verdana14 = UIFont(name: "Verdana", size: 14)
-        static let verdana12 = UIFont(name: "Verdana", size: 12)
-        static let verdana10 = UIFont(name: "Verdana", size: 10)
-        static let verdana8 = UIFont(name: "Verdana", size: 8)
+        static let identifier = "NotificationPictureCell"
+        static let verdanaSize12 = UIFont(name: "Verdana", size: 12)
     }
-
-    // MARK: - IBOutlets
 
     // MARK: - Visual Components
 
     private let notificationLabel: UILabel = {
         let label = UILabel()
-        label.font = Constants.verdana12
+        label.font = Constants.verdanaSize12
         label.numberOfLines = 2
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -49,11 +34,7 @@ class NotificationPictureCell: UITableViewCell {
         return imageView
     }()
 
-    // MARK: - Public Properties
-
-    // MARK: - Private Properties
-
-    // MARK: - Initializers
+    // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -64,12 +45,6 @@ class NotificationPictureCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
-
-    // MARK: - Life Cycle
-
-    // MARK: - Public Methods
-
-    // MARK: - IBAction
 
     // MARK: - Private Methods
 
@@ -93,7 +68,7 @@ class NotificationPictureCell: UITableViewCell {
         pictureImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 
-    func configure(notification: NotificationLink) {
+    func configure(notification: Notification) {
         notificationLabel.text = notification.text
         avatarImageView.image = notification.avatar
         pictureImageView.image = notification.picture

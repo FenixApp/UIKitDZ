@@ -1,25 +1,24 @@
-// LinkTabBarController.swift
+// MainTabBarController.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// MainTabBarController
+/// Таб бар контроллер, инициализирует запуск стартовых экранов приложения по вкладкам
 class MainTabBarController: UITabBarController {
-
     // MARK: - Constants
 
     private enum Constants {
-        static let feedVCTitle = "Лента"
-        static let feedVCImage = UIImage(named: "feed")
-        static let feedVCSelectedImage = UIImage(named: "house")
+        static let feedViewControllerTitle = "Лента"
+        static let feedViewControllerImage = UIImage(named: "feed")
+        static let feedViewControllerSelectedImage = UIImage(named: "house")
 
-        static let noticeVCTitle = "Уведомления"
-        static let noticeVCImage = UIImage(named: "notification")
-        static let noticeVCSelectedImage = UIImage(named: "noticeBlue")
+        static let noticeViewControllerTitle = "Уведомления"
+        static let noticeViewControllerImage = UIImage(named: "notification")
+        static let noticeViewControllerSelectedImage = UIImage(named: "noticeBlue")
 
-        static let profileVCTitle = "Профиль"
-        static let profileVCImage = UIImage(named: "person")
-        static let profileVCSelectedImage = UIImage(named: "personBlue")
+        static let profileViewControllerTitle = "Профиль"
+        static let profileViewControllerImage = UIImage(named: "person")
+        static let profileViewControllerSelectedImage = UIImage(named: "personBlue")
     }
 
     // MARK: - Lifecycle
@@ -40,28 +39,28 @@ class MainTabBarController: UITabBarController {
     }
 
     private func setupTabBarViewControllers() {
-        let feedVC = UINavigationController(rootViewController: MainPageViewController())
-        feedVC.tabBarItem = UITabBarItem(
-            title: Constants.feedVCTitle,
-            image: Constants.feedVCImage,
-            selectedImage: Constants.feedVCSelectedImage
+        let feedViewController = UINavigationController(rootViewController: FeedViewController())
+        feedViewController.tabBarItem = UITabBarItem(
+            title: Constants.feedViewControllerTitle,
+            image: Constants.feedViewControllerImage,
+            selectedImage: Constants.feedViewControllerSelectedImage
         )
 
-        let noticeVC = UINavigationController(rootViewController: NotificationViewController())
-        noticeVC.tabBarItem = UITabBarItem(
-            title: Constants.noticeVCTitle,
-            image: Constants.noticeVCImage,
-            selectedImage: Constants.noticeVCSelectedImage
+        let noticeViewController = UINavigationController(rootViewController: NotificationViewController())
+        noticeViewController.tabBarItem = UITabBarItem(
+            title: Constants.noticeViewControllerTitle,
+            image: Constants.noticeViewControllerImage,
+            selectedImage: Constants.noticeViewControllerSelectedImage
         )
 
-        let profileVC = UINavigationController(rootViewController: ProfileViewController())
-        profileVC.tabBarItem = UITabBarItem(
-            title: Constants.profileVCTitle,
-            image: Constants.profileVCImage,
-            selectedImage: Constants.profileVCSelectedImage
+        let profileViewController = UINavigationController(rootViewController: ProfileViewController())
+        profileViewController.tabBarItem = UITabBarItem(
+            title: Constants.profileViewControllerTitle,
+            image: Constants.profileViewControllerImage,
+            selectedImage: Constants.profileViewControllerSelectedImage
         )
 
-        setViewControllers([feedVC, noticeVC, profileVC], animated: true)
-        selectedViewController = feedVC
+        setViewControllers([feedViewController, noticeViewController, profileViewController], animated: true)
+        selectedViewController = feedViewController
     }
 }

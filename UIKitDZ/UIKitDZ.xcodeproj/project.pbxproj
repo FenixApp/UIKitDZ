@@ -7,23 +7,47 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		C47AE7FF2B87B50300AE417D /* FeedViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE7FE2B87B50300AE417D /* FeedViewController.swift */; };
+		C47AE8012B87B55000AE417D /* Post.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8002B87B55000AE417D /* Post.swift */; };
+		C47AE8032B87B57600AE417D /* PostCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8022B87B57600AE417D /* PostCell.swift */; };
+		C47AE8052B87B59600AE417D /* StorysCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8042B87B59600AE417D /* StorysCell.swift */; };
+		C47AE8072B87B5B100AE417D /* RecommendCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8062B87B5B100AE417D /* RecommendCell.swift */; };
+		C47AE8092B87B5E100AE417D /* MainTabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8082B87B5E100AE417D /* MainTabBarController.swift */; };
+		C47AE80B2B87B61300AE417D /* NotificationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE80A2B87B61300AE417D /* NotificationViewController.swift */; };
+		C47AE80D2B87B62E00AE417D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE80C2B87B62E00AE417D /* ProfileViewController.swift */; };
+		C47AE80F2B87B65600AE417D /* NotificationPictureCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE80E2B87B65600AE417D /* NotificationPictureCell.swift */; };
+		C47AE8112B87B66D00AE417D /* NotificationButtonCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47AE8102B87B66D00AE417D /* NotificationButtonCell.swift */; };
 		C47BD3842B715528000D549B /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3832B715528000D549B /* AppDelegate.swift */; };
 		C47BD3862B715528000D549B /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3852B715528000D549B /* SceneDelegate.swift */; };
-		C47BD3882B715528000D549B /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = C47BD3872B715528000D549B /* ViewController.swift */; };
 		C47BD38B2B715528000D549B /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47BD3892B715528000D549B /* Main.storyboard */; };
 		C47BD38D2B715529000D549B /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = C47BD38C2B715529000D549B /* Assets.xcassets */; };
 		C47BD3902B715529000D549B /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = C47BD38E2B715529000D549B /* LaunchScreen.storyboard */; };
+		C4D6CCA72B83CC9E00B5FB63 /* UIColor+Extension.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4D6CCA62B83CC9E00B5FB63 /* UIColor+Extension.swift */; };
+		C4E38DB02B88638A0010FD9D /* PostsCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E38DAF2B88638A0010FD9D /* PostsCell.swift */; };
+		C4E38DB22B88748E0010FD9D /* Notification.swift in Sources */ = {isa = PBXBuildFile; fileRef = C4E38DB12B88748E0010FD9D /* Notification.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		C47AE7FE2B87B50300AE417D /* FeedViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FeedViewController.swift; sourceTree = "<group>"; };
+		C47AE8002B87B55000AE417D /* Post.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Post.swift; sourceTree = "<group>"; };
+		C47AE8022B87B57600AE417D /* PostCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostCell.swift; sourceTree = "<group>"; };
+		C47AE8042B87B59600AE417D /* StorysCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StorysCell.swift; sourceTree = "<group>"; };
+		C47AE8062B87B5B100AE417D /* RecommendCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RecommendCell.swift; sourceTree = "<group>"; };
+		C47AE8082B87B5E100AE417D /* MainTabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTabBarController.swift; sourceTree = "<group>"; };
+		C47AE80A2B87B61300AE417D /* NotificationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationViewController.swift; sourceTree = "<group>"; };
+		C47AE80C2B87B62E00AE417D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		C47AE80E2B87B65600AE417D /* NotificationPictureCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationPictureCell.swift; sourceTree = "<group>"; };
+		C47AE8102B87B66D00AE417D /* NotificationButtonCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationButtonCell.swift; sourceTree = "<group>"; };
 		C47BD3802B715528000D549B /* UIKitDZ.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = UIKitDZ.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		C47BD3832B715528000D549B /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		C47BD3852B715528000D549B /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		C47BD3872B715528000D549B /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
 		C47BD38A2B715528000D549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/Main.storyboard; sourceTree = "<group>"; };
 		C47BD38C2B715529000D549B /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		C47BD38F2B715529000D549B /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		C47BD3912B715529000D549B /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		C4D6CCA62B83CC9E00B5FB63 /* UIColor+Extension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "UIColor+Extension.swift"; sourceTree = "<group>"; };
+		C4E38DAF2B88638A0010FD9D /* PostsCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PostsCell.swift; sourceTree = "<group>"; };
+		C4E38DB12B88748E0010FD9D /* Notification.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Notification.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -37,6 +61,39 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		C47AE8122B87BEF300AE417D /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				C47AE8002B87B55000AE417D /* Post.swift */,
+				C4E38DB12B88748E0010FD9D /* Notification.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		C47AE8132B87BF0000AE417D /* View */ = {
+			isa = PBXGroup;
+			children = (
+				C47AE8042B87B59600AE417D /* StorysCell.swift */,
+				C47AE8022B87B57600AE417D /* PostCell.swift */,
+				C4E38DAF2B88638A0010FD9D /* PostsCell.swift */,
+				C47AE8062B87B5B100AE417D /* RecommendCell.swift */,
+				C47AE80E2B87B65600AE417D /* NotificationPictureCell.swift */,
+				C47AE8102B87B66D00AE417D /* NotificationButtonCell.swift */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		C47AE8142B87BF0E00AE417D /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				C47AE8082B87B5E100AE417D /* MainTabBarController.swift */,
+				C47AE7FE2B87B50300AE417D /* FeedViewController.swift */,
+				C47AE80A2B87B61300AE417D /* NotificationViewController.swift */,
+				C47AE80C2B87B62E00AE417D /* ProfileViewController.swift */,
+			);
+			path = Controller;
+			sourceTree = "<group>";
+		};
 		C47BD3772B715528000D549B = {
 			isa = PBXGroup;
 			children = (
@@ -56,15 +113,26 @@
 		C47BD3822B715528000D549B /* UIKitDZ */ = {
 			isa = PBXGroup;
 			children = (
+				C47AE8122B87BEF300AE417D /* Model */,
+				C47AE8132B87BF0000AE417D /* View */,
+				C47AE8142B87BF0E00AE417D /* Controller */,
+				C4D6CCA52B83CC7800B5FB63 /* Helpers */,
 				C47BD3832B715528000D549B /* AppDelegate.swift */,
 				C47BD3852B715528000D549B /* SceneDelegate.swift */,
-				C47BD3872B715528000D549B /* ViewController.swift */,
 				C47BD3892B715528000D549B /* Main.storyboard */,
 				C47BD38C2B715529000D549B /* Assets.xcassets */,
 				C47BD38E2B715529000D549B /* LaunchScreen.storyboard */,
 				C47BD3912B715529000D549B /* Info.plist */,
 			);
 			path = UIKitDZ;
+			sourceTree = "<group>";
+		};
+		C4D6CCA52B83CC7800B5FB63 /* Helpers */ = {
+			isa = PBXGroup;
+			children = (
+				C4D6CCA62B83CC9E00B5FB63 /* UIColor+Extension.swift */,
+			);
+			path = Helpers;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -183,9 +251,21 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				C47BD3882B715528000D549B /* ViewController.swift in Sources */,
+				C47AE80B2B87B61300AE417D /* NotificationViewController.swift in Sources */,
+				C47AE7FF2B87B50300AE417D /* FeedViewController.swift in Sources */,
+				C47AE8112B87B66D00AE417D /* NotificationButtonCell.swift in Sources */,
+				C4E38DB22B88748E0010FD9D /* Notification.swift in Sources */,
 				C47BD3842B715528000D549B /* AppDelegate.swift in Sources */,
+				C47AE80F2B87B65600AE417D /* NotificationPictureCell.swift in Sources */,
+				C4E38DB02B88638A0010FD9D /* PostsCell.swift in Sources */,
+				C47AE8092B87B5E100AE417D /* MainTabBarController.swift in Sources */,
+				C47AE8072B87B5B100AE417D /* RecommendCell.swift in Sources */,
 				C47BD3862B715528000D549B /* SceneDelegate.swift in Sources */,
+				C47AE80D2B87B62E00AE417D /* ProfileViewController.swift in Sources */,
+				C47AE8052B87B59600AE417D /* StorysCell.swift in Sources */,
+				C47AE8012B87B55000AE417D /* Post.swift in Sources */,
+				C4D6CCA72B83CC9E00B5FB63 /* UIColor+Extension.swift in Sources */,
+				C47AE8032B87B57600AE417D /* PostCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -261,7 +341,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -315,7 +395,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 16.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -340,6 +420,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -368,6 +449,7 @@
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				IPHONEOS_DEPLOYMENT_TARGET = 16.2;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

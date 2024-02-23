@@ -3,52 +3,44 @@
 
 import UIKit
 
-/// Стартовый экран приложения, лента
-class FeedViewController: UIViewController {
+/// Главный экран приложения с лентой новостей
+final class FeedViewController: UIViewController {
     // MARK: - Constants
 
     enum Constants {
-        static let myPhoto = "myPhoto"
         static let turPhoto = "turPhoto"
         static let naturePicture = "naturePicture"
-        static let heartImage = "heart"
-        static let tenMinutesText = "10 минут назад"
-        static let commentImage = "comment"
-        static let exportImage = "export"
-        static let saveImage = "save"
-        static let myNickname = "rus1asha"
-        static let turNickname = "tur_v_dagestan"
-        static let likesText = "Нравится: 201"
-        static let descriptionText = "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
-        static let verdanaBold18 = UIFont(name: "Verdana-Bold", size: 18)
-        static let verdanaBold16 = UIFont(name: "Verdana-Bold", size: 16)
-        static let verdanaBold26 = UIFont(name: "Verdana-Bold", size: 26)
-        static let verdanaBold12 = UIFont(name: "Verdana-Bold", size: 12)
-        static let verdanaBold10 = UIFont(name: "Verdana-Bold", size: 10)
-        static let verdanaBold14 = UIFont(name: "Verdana-Bold", size: 14)
-        static let verdana16 = UIFont(name: "Verdana", size: 16)
-        static let verdana14 = UIFont(name: "Verdana", size: 14)
-        static let verdana12 = UIFont(name: "Verdana", size: 12)
-        static let verdana10 = UIFont(name: "Verdana", size: 10)
+        static let naturePictureTwo = "naturePictureTwo"
+        static let tenMinTextLabel = "10 минут назад"
+        static let turTitle = "tur_v_dagestan"
     }
-
-    let tableView: UITableView = .init()
 
     // MARK: - Private Properties
 
-    private var posts: [Post] = []
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
 
-    // MARK: - Initializers
+    private var posts: [Post] = []
 
     // MARK: - Life Cycle
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        tableView.translatesAutoresizingMaskIntoConstraints = false
 
+        setupTableView()
+        setupConstraints()
+        setupTabBar()
+        setupGalery()
+    }
+
+    // MARK: - Public Methods
+
+    func setupTabBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "RMLink"),
-
             style: .plain,
             target: self,
             action: nil
@@ -62,18 +54,33 @@ class FeedViewController: UIViewController {
             action: nil
         )
         navigationItem.rightBarButtonItem?.tintColor = .black
+    }
 
-        setupTableView()
+    func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(StorysCell.self, forCellReuseIdentifier: StorysCell.Constants.identifier)
+        tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.Constants.identifier)
+        tableView.register(RecommendCell.self, forCellReuseIdentifier: RecommendCell.Constants.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+    }
+
+    // MARK: - Private Methods
+
+    private func setupGalery() {
         let turPhotoImage = UIImage(named: Constants.turPhoto)
         let turPictureImage = UIImage(named: Constants.naturePicture)
+        let turPictureImageTwo = UIImage(named: Constants.naturePictureTwo)
 
-        if let turPhoto = turPhotoImage, let turPicture = turPictureImage {
-            let firstPostImages = [turPicture, turPicture, turPicture]
+        if let turPhoto = turPhotoImage, let turPicture = turPictureImage, let turPictureTwo = turPictureImageTwo {
+            let firstPostImages = [turPicture, turPictureTwo, turPicture]
             let post1 = Post(
-                nickname: Constants.turNickname,
-                photo: turPhoto,
-                pictures: firstPostImages,
-                timeText: Constants.tenMinutesText
+                nickName: Constants.turTitle,
+                photoImage: turPhoto,
+                picturesImage: firstPostImages,
+                timeText: Constants.tenMinTextLabel
             )
             posts.append(post1)
             posts.append(post1)
@@ -81,61 +88,46 @@ class FeedViewController: UIViewController {
             posts.append(post1)
             posts.append(post1)
         }
-
-        tableView.dataSource = self
-        tableView.delegate = self
-        tableView.register(PostCell.self, forCellReuseIdentifier: "PostCell")
-        tableView.register(StorysCell.self, forCellReuseIdentifier: "StoryCell")
-        tableView.register(RecommendCell.self, forCellReuseIdentifier: "RecommendCell")
-        tableView.rowHeight = UITableView.automaticDimension
-        tableView.backgroundColor = .white
-        tableView.separatorStyle = .none
     }
 
-    // MARK: - Public Methods
-
-    // MARK: - IBAction
-
-    // MARK: - Private Methods
+    private func setupConstraints() {
+        view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.widthAnchor.constraint(equalToConstant: 375).isActive = true
+    }
 }
 
-extension FeedViewController: UITableViewDataSource {
+// MARK: - UITableViewDataSource, UITableViewDelegate
+
+extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         if indexPath.row == 0 {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "StoryCell", for: indexPath) as? StorysCell
-            else { fatalError() }
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: StorysCell.Constants.identifier,
+                for: indexPath
+            ) as? StorysCell
+            else { return UITableViewCell() }
             return cell
-
         } else if indexPath.row == 2 {
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: "RecommendCell",
-
-                for: indexPath
+                withIdentifier: RecommendCell.Constants.identifier, for: indexPath
             ) as? RecommendCell
-            else { fatalError() }
+            else { return UITableViewCell() }
             return cell
         } else {
-            guard let cell = tableView.dequeueReusableCell(withIdentifier: "PostCell", for: indexPath) as? PostCell
-            else { fatalError() }
-
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PostCell.Constants.identifier,
+                for: indexPath
+            ) as? PostCell
+            else { return UITableViewCell() }
             cell.configure(post: posts[indexPath.row])
             return cell
         }
-    }
-}
-
-extension FeedViewController: UITableViewDelegate {}
-
-extension FeedViewController {
-    func setupTableView() {
-        view.addSubview(tableView)
-        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
-        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
-        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
-        tableView.widthAnchor.constraint(equalToConstant: 375).isActive = true
     }
 }

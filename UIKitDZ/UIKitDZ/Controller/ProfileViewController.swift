@@ -3,5 +3,5 @@
 
 import UIKit
 
-/// pf
-class ProfileViewController: UIViewController {}
+/// Экран профиля
+final class ProfileViewController: UIViewController {}

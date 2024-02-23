@@ -3,92 +3,59 @@
 
 import UIKit
 
-/// Ячейка таблицы с постом
-class PostCell: UITableViewCell {
+/// Ячейка с постом
+final class PostCell: UITableViewCell {
     // MARK: - Constants
 
     enum Constants {
-        static let myPhoto = "myPhoto"
+        static let identifier = "PostCell"
         static let turPhoto = "turPhoto"
-        static let naturePicture = "naturePicture"
+        static let turTitle = "tur_v_dagestan"
+        static let dottedImage = "dottedButton"
         static let heartImage = "heart"
-        static let tenMinutesText = "10 минут назад"
-        static let commentText = "Комментировать..."
-        static let commentImage = "comment"
-        static let exportImage = "export"
+        static let messageImage = "comment"
+        static let airPlaneImage = "export"
         static let saveImage = "save"
-        static let myNickname = "rus1asha"
-        static let turNickname = "tur_v_dagestan"
         static let likesText = "Нравится: 201"
         static let descriptionText = "Насладитесь красотой природы. Забронировать тур в Дагестан можно уже сейчас!"
-        static let verdanaBold18 = UIFont(name: "Verdana-Bold", size: 18)
-        static let verdanaBold16 = UIFont(name: "Verdana-Bold", size: 16)
-        static let verdanaBold26 = UIFont(name: "Verdana-Bold", size: 26)
-        static let verdanaBold12 = UIFont(name: "Verdana-Bold", size: 12)
-        static let verdanaBold10 = UIFont(name: "Verdana-Bold", size: 10)
-        static let verdanaBold14 = UIFont(name: "Verdana-Bold", size: 14)
-        static let verdana16 = UIFont(name: "Verdana", size: 16)
-        static let verdana14 = UIFont(name: "Verdana", size: 14)
-        static let verdana12 = UIFont(name: "Verdana", size: 12)
-        static let verdana10 = UIFont(name: "Verdana", size: 10)
+        static let smallAvatar = "smallAvatar"
+        static let commentText = "Комментировать..."
+        static let tenMinTextLabel = "10 минут назад"
+        static let verdanaBoldSize12 = UIFont(name: "Verdana-Bold", size: 12)
+        static let verdanaBoldSize10 = UIFont(name: "Verdana-Bold", size: 10)
+        static let verdanaSize10 = UIFont(name: "Verdana", size: 10)
+        static let naturePicture = "naturePicture"
     }
-
-    // MARK: - IBOutlets
 
     // MARK: - Visual Components
 
-    private let avatarImageView: UIImageView = {
-        let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.myPhoto)
-        imageView.translatesAutoresizingMaskIntoConstraints = false
-
-//        imageView.layer.cornerRadius = imageView.frame.height / 2
-//        imageView.layer.masksToBounds = true
-        return imageView
-    }()
-
-    private let nicknameLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.myNickname
-        label.font = Constants.verdanaBold12
-        label.textAlignment = .center
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private let likesLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.likesText
-        label.font = Constants.verdanaBold10
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private let descriptionLabel: UILabel = {
-        let label = UILabel()
-        label.text = Constants.descriptionText
-        label.font = Constants.verdana10
-        label.numberOfLines = 2
-        label.translatesAutoresizingMaskIntoConstraints = false
-        return label
-    }()
-
-    private let turPhotoImageView: UIImageView = {
+    /// аватар поста
+    private let avatarPostPhotoImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.turPhoto)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let turNicknameLabel: UILabel = {
+    /// название поста
+    private let titlePostLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.myNickname
-        label.font = Constants.verdanaBold12
+        label.text = Constants.turTitle
+        label.font = Constants.verdanaBoldSize12
         label.textAlignment = .center
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    /// Кнопка
+    private let dottedImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Constants.dottedImage)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    /// сердце клик
     private let heartImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.heartImage)
@@ -96,20 +63,23 @@ class PostCell: UITableViewCell {
         return imageView
     }()
 
-    private let commentImageView: UIImageView = {
+    /// комментарий клик
+    private let messageImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.commentImage)
+        imageView.image = UIImage(named: Constants.messageImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
-    private let exportImageView: UIImageView = {
+    /// телеграмм клик
+    private let airPlaneImageView: UIImageView = {
         let imageView = UIImageView()
-        imageView.image = UIImage(named: Constants.exportImage)
+        imageView.image = UIImage(named: Constants.airPlaneImage)
         imageView.translatesAutoresizingMaskIntoConstraints = false
         return imageView
     }()
 
+    /// сохранить клик
     private let saveImageView: UIImageView = {
         let imageView = UIImageView()
         imageView.image = UIImage(named: Constants.saveImage)
@@ -117,19 +87,48 @@ class PostCell: UITableViewCell {
         return imageView
     }()
 
+    /// нравится 201
+    private let likesLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.likesText
+        label.font = Constants.verdanaBoldSize10
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    /// Насладитесь красотой природы
+    private let descriptionLabel: UILabel = {
+        let label = UILabel()
+        label.text = Constants.descriptionText
+        label.font = Constants.verdanaSize10
+        label.numberOfLines = 2
+        label.translatesAutoresizingMaskIntoConstraints = false
+        return label
+    }()
+
+    /// аватар комментировать
+    private let smallAvatarImageView: UIImageView = {
+        let imageView = UIImageView()
+        imageView.image = UIImage(named: Constants.smallAvatar)
+        imageView.translatesAutoresizingMaskIntoConstraints = false
+        return imageView
+    }()
+
+    /// комментировать
     private let commentLabel: UILabel = {
         let label = UILabel()
         label.text = Constants.commentText
-        label.font = Constants.verdanaBold10
+        label.font = Constants.verdanaBoldSize10
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
     }()
 
+    /// 10 минут назад
     private let timeLabel: UILabel = {
         let label = UILabel()
-        label.text = Constants.tenMinutesText
-        label.font = Constants.verdanaBold10
+        label.text = Constants.tenMinTextLabel
+        label.font = Constants.verdanaBoldSize10
         label.textColor = .lightGray
         label.translatesAutoresizingMaskIntoConstraints = false
         return label
@@ -148,21 +147,16 @@ class PostCell: UITableViewCell {
     private let imageScrollView: UIScrollView = {
         let scrollView = UIScrollView()
         scrollView.translatesAutoresizingMaskIntoConstraints = false
-//        scrollView.isScrollEnabled = true
-//        scrollView.isUserInteractionEnabled = true
-//        scrollView.showsHorizontalScrollIndicator = true
+        scrollView.showsHorizontalScrollIndicator = false
         return scrollView
     }()
 
-    // MARK: - Public Properties
-
-    // MARK: - Private Properties
-
-    // MARK: - Initializers
+    // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        setupConstraints()
     }
 
     @available(*, unavailable)
@@ -170,110 +164,107 @@ class PostCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Life Cycle
-
-    // MARK: - Public Methods
-
-    // MARK: - IBAction
-
     // MARK: - Private Methods
 
     private func setupCell() {
-        contentView.addSubview(turPhotoImageView)
-        turPhotoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        turPhotoImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
-        turPhotoImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
-        turPhotoImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
-        contentView.addSubview(turNicknameLabel)
-        turNicknameLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
-        turNicknameLabel.leftAnchor.constraint(equalTo: turPhotoImageView.rightAnchor, constant: 6).isActive = true
-        turNicknameLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
-        turNicknameLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
-
+        contentView.addSubview(avatarPostPhotoImageView)
+        contentView.addSubview(titlePostLabel)
         contentView.addSubview(imageScrollView)
-        imageScrollView.topAnchor.constraint(equalTo: turNicknameLabel.bottomAnchor, constant: 10).isActive = true
-        imageScrollView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        contentView.addSubview(heartImageView)
+        contentView.addSubview(dottedImageView)
+        contentView.addSubview(messageImageView)
+        contentView.addSubview(airPlaneImageView)
+        contentView.addSubview(saveImageView)
+        contentView.addSubview(likesLabel)
+        contentView.addSubview(smallAvatarImageView)
+        contentView.addSubview(descriptionLabel)
+        contentView.addSubview(commentLabel)
+        contentView.addSubview(timeLabel)
+    }
+
+    private func setupConstraints() {
+        avatarPostPhotoImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        avatarPostPhotoImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12)
+            .isActive = true
+        avatarPostPhotoImageView.widthAnchor.constraint(equalToConstant: 30).isActive = true
+        avatarPostPhotoImageView.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+        titlePostLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 20).isActive = true
+        titlePostLabel.leadingAnchor.constraint(equalTo: avatarPostPhotoImageView.trailingAnchor, constant: 6)
+            .isActive = true
+        titlePostLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
+        titlePostLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
+
+        dottedImageView.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 35).isActive = true
+        dottedImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -12).isActive = true
+        dottedImageView.widthAnchor.constraint(equalToConstant: 14).isActive = true
+        dottedImageView.heightAnchor.constraint(equalToConstant: 2).isActive = true
+
+        imageScrollView.topAnchor.constraint(equalTo: titlePostLabel.bottomAnchor, constant: 10).isActive = true
+        imageScrollView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor).isActive = true
         imageScrollView.widthAnchor.constraint(equalToConstant: 375).isActive = true
         imageScrollView.heightAnchor.constraint(equalToConstant: 237).isActive = true
-//        contentView.addSubview(pictureImageView)
-//        pictureImageView.topAnchor.constraint(equalTo: turNicknameLabel.bottomAnchor, constant: 10).isActive = true
-//        pictureImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-//        pictureImageView.widthAnchor.constraint(equalToConstant: 375).isActive = true
-//        pictureImageView.heightAnchor.constraint(equalToConstant: 237).isActive = true
-//        imagePageControl.translatesAutoresizingMaskIntoConstraints = false
 
-//        imagePageControl.widthAnchor.constraint(equalToConstant: 375).isActive = true
-//        imagePageControl.heightAnchor.constraint(equalToConstant: 37).isActive = true
-
-        contentView.addSubview(heartImageView)
         heartImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 8).isActive = true
-        heartImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 10).isActive = true
+        heartImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 10).isActive = true
         heartImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
         heartImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
-        contentView.addSubview(commentImageView)
-        commentImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 8).isActive = true
-        commentImageView.leftAnchor.constraint(equalTo: heartImageView.rightAnchor, constant: 8).isActive = true
-        commentImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
-        commentImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
+        messageImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 8).isActive = true
+        messageImageView.leadingAnchor.constraint(equalTo: heartImageView.trailingAnchor, constant: 8).isActive = true
+        messageImageView.widthAnchor.constraint(equalToConstant: 24).isActive = true
+        messageImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
-        contentView.addSubview(exportImageView)
-        exportImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 10).isActive = true
-        exportImageView.leftAnchor.constraint(equalTo: commentImageView.rightAnchor, constant: 8).isActive = true
-        exportImageView.widthAnchor.constraint(equalToConstant: 19).isActive = true
-        exportImageView.heightAnchor.constraint(equalToConstant: 19).isActive = true
+        airPlaneImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 10).isActive = true
+        airPlaneImageView.leadingAnchor.constraint(equalTo: messageImageView.trailingAnchor, constant: 8)
+            .isActive = true
+        airPlaneImageView.widthAnchor.constraint(equalToConstant: 19).isActive = true
+        airPlaneImageView.heightAnchor.constraint(equalToConstant: 19).isActive = true
 
-        contentView.addSubview(saveImageView)
         saveImageView.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 8).isActive = true
-        saveImageView.rightAnchor.constraint(equalTo: contentView.rightAnchor, constant: -9).isActive = true
+        saveImageView.trailingAnchor.constraint(equalTo: contentView.trailingAnchor, constant: -9).isActive = true
         saveImageView.widthAnchor.constraint(equalToConstant: 18).isActive = true
         saveImageView.heightAnchor.constraint(equalToConstant: 24).isActive = true
 
-        contentView.addSubview(likesLabel)
         likesLabel.topAnchor.constraint(equalTo: heartImageView.bottomAnchor, constant: 6).isActive = true
-        likesLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+        likesLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         likesLabel.widthAnchor.constraint(equalToConstant: 107).isActive = true
         likesLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
 
-        contentView.addSubview(descriptionLabel)
         descriptionLabel.topAnchor.constraint(equalTo: likesLabel.bottomAnchor, constant: 6).isActive = true
-        descriptionLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+        descriptionLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         descriptionLabel.widthAnchor.constraint(equalToConstant: 361).isActive = true
         descriptionLabel.heightAnchor.constraint(equalToConstant: 30).isActive = true
 
-        contentView.addSubview(avatarImageView)
-        avatarImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4).isActive = true
-        avatarImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
-        avatarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
-        avatarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
+        smallAvatarImageView.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 4).isActive = true
+        smallAvatarImageView.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
+        smallAvatarImageView.widthAnchor.constraint(equalToConstant: 20).isActive = true
+        smallAvatarImageView.heightAnchor.constraint(equalToConstant: 20).isActive = true
 
-        contentView.addSubview(commentLabel)
         commentLabel.topAnchor.constraint(equalTo: descriptionLabel.bottomAnchor, constant: 6).isActive = true
-        commentLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 3).isActive = true
+        commentLabel.leadingAnchor.constraint(equalTo: smallAvatarImageView.trailingAnchor, constant: 3).isActive = true
         commentLabel.widthAnchor.constraint(equalToConstant: 150).isActive = true
         commentLabel.heightAnchor.constraint(equalToConstant: 15).isActive = true
 
-        contentView.addSubview(timeLabel)
         timeLabel.topAnchor.constraint(equalTo: commentLabel.bottomAnchor, constant: 7).isActive = true
-        timeLabel.leftAnchor.constraint(equalTo: contentView.leftAnchor, constant: 12).isActive = true
+        timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         timeLabel.widthAnchor.constraint(equalToConstant: 361).isActive = true
-        timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor).isActive = true
+        timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
     }
 
     func configure(post: Post) {
-        turNicknameLabel.text = post.nickname
-        turPhotoImageView.image = post.photo
-        timeLabel.text = post.timeText
-        imagePageControl.numberOfPages = post.pictures.count
+//        titlePostLabel.text = post.nickname
+//        avatarPostPhotoImageView.image = post.photo
+//        timeLabel.text = post.timeText
+        imagePageControl.numberOfPages = post.picturesImage.count
 
-        if post.pictures.count < 2 {
+        if post.picturesImage.count < 2 {
             imagePageControl.isHidden = true
         }
         var xPosition = 0
-        for image in post.pictures {
+        for _ in post.picturesImage {
             let pictureImageView = UIImageView()
-            pictureImageView.image = image
+            pictureImageView.image = UIImage(named: Constants.naturePicture)
             pictureImageView.frame = CGRect(x: xPosition, y: 0, width: Int(UIScreen.main.bounds.width), height: 237)
             imageScrollView.addSubview(pictureImageView)
             xPosition += Int(UIScreen.main.bounds.width)
