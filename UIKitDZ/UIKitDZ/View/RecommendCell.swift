@@ -3,7 +3,7 @@
 
 import UIKit
 
-/// RecomendationViewCell
+/// Ячейка с рекомендуемыми аккаунтами
 final class RecommendCell: UITableViewCell {
     // MARK: - Constants
 

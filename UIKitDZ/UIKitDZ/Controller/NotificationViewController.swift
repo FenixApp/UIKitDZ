@@ -18,7 +18,9 @@ final class NotificationViewController: UIViewController {
         static let verdanaSize14 = UIFont(name: "Verdana", size: 14)
     }
 
-    let tableView: UITableView = {
+    // MARK: - Visual Components
+
+    private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
@@ -50,11 +52,12 @@ final class NotificationViewController: UIViewController {
         super.viewDidLoad()
         setupTableView()
         setupUI()
+        setupConstraints()
     }
 
     // MARK: - Private Methods
 
-    func setupUI() {
+    private func setupTableView() {
         let firstAvatarImage = Constants.firstAvatarImage
         let firstPictureImage = Constants.firstPictureImage
 
@@ -87,28 +90,33 @@ final class NotificationViewController: UIViewController {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
     }
-
-    func setupTableView() {
+    
+    private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(notificationLabel)
+        view.addSubview(requestLabel)
+        view.addSubview(tableView)
+    }
+
+    private func setupConstraints() {
         notificationLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 57).isActive = true
         notificationLabel.heightAnchor.constraint(equalToConstant: 27).isActive = true
         notificationLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
         notificationLabel.widthAnchor.constraint(equalToConstant: 194).isActive = true
 
-        view.addSubview(requestLabel)
         requestLabel.topAnchor.constraint(equalTo: view.topAnchor, constant: 110).isActive = true
         requestLabel.heightAnchor.constraint(equalToConstant: 17).isActive = true
         requestLabel.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
         requestLabel.widthAnchor.constraint(equalToConstant: 251).isActive = true
 
-        view.addSubview(tableView)
         tableView.topAnchor.constraint(equalTo: requestLabel.bottomAnchor, constant: 21).isActive = true
         tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
         tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor, constant: 12).isActive = true
         tableView.widthAnchor.constraint(equalToConstant: 351).isActive = true
     }
 }
+
+// MARK: - NotificationViewController + UITableViewDataSource
 
 extension NotificationViewController: UITableViewDataSource {
     func numberOfSections(in tableView: UITableView) -> Int {
@@ -160,6 +168,8 @@ extension NotificationViewController: UITableViewDataSource {
         50
     }
 }
+
+// MARK: - NotificationViewController + UITableViewDelegate
 
 extension NotificationViewController: UITableViewDelegate {
     func tableView(_ tableView: UITableView, viewForHeaderInSection section: Int) -> UIView? {

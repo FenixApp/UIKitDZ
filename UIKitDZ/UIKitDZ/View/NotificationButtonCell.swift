@@ -67,7 +67,7 @@ final class NotificationButtonCell: UITableViewCell {
         return imageView
     }()
 
-    // MARK: - Initializers
+    // MARK: - Life Cycle
 
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
@@ -78,6 +78,15 @@ final class NotificationButtonCell: UITableViewCell {
     @available(*, unavailable)
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
+    }
+
+    // MARK: - Public Methods
+
+    func configure(notification: Notification) {
+        notificationLabel.text = notification.text
+        avatarImageView.image = notification.avatar
+        notificationLabelTwo.text = notification.text
+        avatarImageViewTwo.image = notification.avatar
     }
 
     // MARK: - Private Methods
@@ -122,12 +131,5 @@ final class NotificationButtonCell: UITableViewCell {
         unscribeButton.leftAnchor.constraint(equalTo: notificationLabelTwo.rightAnchor, constant: 8).isActive = true
         unscribeButton.widthAnchor.constraint(equalToConstant: 140).isActive = true
         unscribeButton.heightAnchor.constraint(equalToConstant: 30).isActive = true
-    }
-
-    func configure(notification: Notification) {
-        notificationLabel.text = notification.text
-        avatarImageView.image = notification.avatar
-        notificationLabelTwo.text = notification.text
-        avatarImageViewTwo.image = notification.avatar
     }
 }

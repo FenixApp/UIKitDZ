@@ -15,13 +15,15 @@ final class FeedViewController: UIViewController {
         static let turTitle = "tur_v_dagestan"
     }
 
-    // MARK: - Private Properties
+    // MARK: - Visual Components
 
     private let tableView: UITableView = {
         let tableView = UITableView()
         tableView.translatesAutoresizingMaskIntoConstraints = false
         return tableView
     }()
+
+    // MARK: - Private Properties
 
     private var posts: [Post] = []
 
@@ -56,7 +58,9 @@ final class FeedViewController: UIViewController {
         navigationItem.rightBarButtonItem?.tintColor = .black
     }
 
-    func setupTableView() {
+    // MARK: - Private Methods
+
+    private func setupTableView() {
         tableView.dataSource = self
         tableView.delegate = self
         tableView.register(StorysCell.self, forCellReuseIdentifier: StorysCell.Constants.identifier)
@@ -66,8 +70,6 @@ final class FeedViewController: UIViewController {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
     }
-
-    // MARK: - Private Methods
 
     private func setupGalery() {
         let turPhotoImage = UIImage(named: Constants.turPhoto)
@@ -99,9 +101,13 @@ final class FeedViewController: UIViewController {
     }
 }
 
-// MARK: - UITableViewDataSource, UITableViewDelegate
+// MARK: - FeedViewController + UITableViewDelegate
 
-extension FeedViewController: UITableViewDataSource, UITableViewDelegate {
+extension FeedViewController: UITableViewDelegate {}
+
+// MARK: - FeedViewController + UITableViewDataSource
+
+extension FeedViewController: UITableViewDataSource {
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         posts.count
     }

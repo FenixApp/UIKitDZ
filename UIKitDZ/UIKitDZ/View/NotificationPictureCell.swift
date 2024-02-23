@@ -39,6 +39,7 @@ final class NotificationPictureCell: UITableViewCell {
     override init(style: UITableViewCell.CellStyle, reuseIdentifier: String?) {
         super.init(style: style, reuseIdentifier: reuseIdentifier)
         setupCell()
+        setupConstraints()
     }
 
     @available(*, unavailable)
@@ -46,31 +47,36 @@ final class NotificationPictureCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
-    // MARK: - Private Methods
-
-    private func setupCell() {
-        contentView.addSubview(avatarImageView)
-        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        avatarImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
-        avatarImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        avatarImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-        contentView.addSubview(notificationLabel)
-        notificationLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        notificationLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 7).isActive = true
-        notificationLabel.widthAnchor.constraint(equalToConstant: 240).isActive = true
-        notificationLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
-
-        contentView.addSubview(pictureImageView)
-        pictureImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
-        pictureImageView.leftAnchor.constraint(equalTo: notificationLabel.rightAnchor, constant: 24).isActive = true
-        pictureImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
-        pictureImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
-    }
+    // MARK: Public Methods
 
     func configure(notification: Notification) {
         notificationLabel.text = notification.text
         avatarImageView.image = notification.avatar
         pictureImageView.image = notification.picture
+    }
+
+    // MARK: - Private Methods
+
+    private func setupCell() {
+        contentView.addSubview(avatarImageView)
+        contentView.addSubview(notificationLabel)
+        contentView.addSubview(pictureImageView)
+    }
+
+    private func setupConstraints() {
+        avatarImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        avatarImageView.leftAnchor.constraint(equalTo: contentView.leftAnchor).isActive = true
+        avatarImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        avatarImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+        notificationLabel.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        notificationLabel.leftAnchor.constraint(equalTo: avatarImageView.rightAnchor, constant: 7).isActive = true
+        notificationLabel.widthAnchor.constraint(equalToConstant: 240).isActive = true
+        notificationLabel.heightAnchor.constraint(equalToConstant: 40).isActive = true
+
+        pictureImageView.topAnchor.constraint(equalTo: contentView.topAnchor).isActive = true
+        pictureImageView.leftAnchor.constraint(equalTo: notificationLabel.rightAnchor, constant: 24).isActive = true
+        pictureImageView.widthAnchor.constraint(equalToConstant: 40).isActive = true
+        pictureImageView.heightAnchor.constraint(equalToConstant: 40).isActive = true
     }
 }

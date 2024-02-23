@@ -164,6 +164,36 @@ final class PostCell: UITableViewCell {
         fatalError("init(coder:) has not been implemented")
     }
 
+    // MARK: - Public Methods
+
+    func configure(post: Post) {
+        titlePostLabel.text = post.nickName
+        avatarPostPhotoImageView.image = post.photoImage
+        timeLabel.text = post.timeText
+        imagePageControl.numberOfPages = post.picturesImage.count
+
+        if post.picturesImage.count < 2 {
+            imagePageControl.isHidden = true
+        }
+        var xPosition = 0
+        for _ in post.picturesImage {
+            let pictureImageView = UIImageView()
+            pictureImageView.image = UIImage(named: Constants.naturePicture)
+            pictureImageView.frame = CGRect(x: xPosition, y: 0, width: Int(UIScreen.main.bounds.width), height: 237)
+            imageScrollView.addSubview(pictureImageView)
+            xPosition += Int(UIScreen.main.bounds.width)
+            imageScrollView.contentSize = CGSize(width: xPosition, height: 237)
+            contentView.addSubview(imagePageControl)
+            imagePageControl.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 10).isActive = true
+            imagePageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
+        }
+    }
+
+    @objc func pageControlDidChange(_ sender: UIPageControl) {
+        let offsetX = UIScreen.main.bounds.width * CGFloat(imagePageControl.currentPage)
+        imageScrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
+    }
+
     // MARK: - Private Methods
 
     private func setupCell() {
@@ -250,33 +280,5 @@ final class PostCell: UITableViewCell {
         timeLabel.leadingAnchor.constraint(equalTo: contentView.leadingAnchor, constant: 12).isActive = true
         timeLabel.widthAnchor.constraint(equalToConstant: 361).isActive = true
         timeLabel.bottomAnchor.constraint(equalTo: contentView.bottomAnchor, constant: -20).isActive = true
-    }
-
-    func configure(post: Post) {
-//        titlePostLabel.text = post.nickname
-//        avatarPostPhotoImageView.image = post.photo
-//        timeLabel.text = post.timeText
-        imagePageControl.numberOfPages = post.picturesImage.count
-
-        if post.picturesImage.count < 2 {
-            imagePageControl.isHidden = true
-        }
-        var xPosition = 0
-        for _ in post.picturesImage {
-            let pictureImageView = UIImageView()
-            pictureImageView.image = UIImage(named: Constants.naturePicture)
-            pictureImageView.frame = CGRect(x: xPosition, y: 0, width: Int(UIScreen.main.bounds.width), height: 237)
-            imageScrollView.addSubview(pictureImageView)
-            xPosition += Int(UIScreen.main.bounds.width)
-            imageScrollView.contentSize = CGSize(width: xPosition, height: 237)
-            contentView.addSubview(imagePageControl)
-            imagePageControl.topAnchor.constraint(equalTo: imageScrollView.bottomAnchor, constant: 10).isActive = true
-            imagePageControl.centerXAnchor.constraint(equalTo: contentView.centerXAnchor).isActive = true
-        }
-    }
-
-    @objc func pageControlDidChange(_ sender: UIPageControl) {
-        let offsetX = UIScreen.main.bounds.width * CGFloat(imagePageControl.currentPage)
-        imageScrollView.setContentOffset(CGPoint(x: offsetX, y: 0), animated: true)
     }
 }
