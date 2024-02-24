@@ -15,6 +15,13 @@ final class FeedViewController: UIViewController {
         static let turTitle = "tur_v_dagestan"
     }
 
+    enum TypeCells {
+        case story
+        case post
+        case recommend
+        case posts
+    }
+
     // MARK: - Visual Components
 
     private let tableView: UITableView = {
@@ -26,6 +33,7 @@ final class FeedViewController: UIViewController {
     // MARK: - Private Properties
 
     private var posts: [Post] = []
+    private let typeCells: [TypeCells] = [.story, .post, .recommend, .posts]
 
     // MARK: - Life Cycle
 
@@ -34,13 +42,13 @@ final class FeedViewController: UIViewController {
 
         setupTableView()
         setupConstraints()
-        setupTabBar()
+        setupNavigationBar()
         setupGalery()
     }
 
     // MARK: - Public Methods
 
-    func setupTabBar() {
+    func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
             image: UIImage(named: "RMLink"),
             style: .plain,
@@ -108,25 +116,44 @@ extension FeedViewController: UITableViewDelegate {}
 // MARK: - FeedViewController + UITableViewDataSource
 
 extension FeedViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        typeCells.count
+    }
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        posts.count
+        let cellsType = typeCells[section]
+        switch cellsType {
+        case .story, .post, .recommend:
+            return 1
+        case .posts:
+            return posts.count
+        }
     }
 
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        if indexPath.row == 0 {
+        let cells = typeCells[indexPath.section]
+        switch cells {
+        case .story:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: StorysCell.Constants.identifier,
                 for: indexPath
-            ) as? StorysCell
-            else { return UITableViewCell() }
+            ) as? StorysCell else { return UITableViewCell() }
             return cell
-        } else if indexPath.row == 2 {
+        case .recommend:
             guard let cell = tableView.dequeueReusableCell(
-                withIdentifier: RecommendCell.Constants.identifier, for: indexPath
-            ) as? RecommendCell
-            else { return UITableViewCell() }
+                withIdentifier: RecommendCell.Constants.identifier,
+                for: indexPath
+            ) as? RecommendCell else { return UITableViewCell() }
             return cell
-        } else {
+        case .posts:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PostCell.Constants.identifier,
+                for: indexPath
+            ) as? PostCell
+            else { return UITableViewCell() }
+            cell.configure(post: posts[indexPath.row])
+            return cell
+        case .post:
             guard let cell = tableView.dequeueReusableCell(
                 withIdentifier: PostCell.Constants.identifier,
                 for: indexPath

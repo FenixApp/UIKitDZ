@@ -90,7 +90,7 @@ final class NotificationViewController: UIViewController {
         tableView.backgroundColor = .white
         tableView.separatorStyle = .none
     }
-    
+
     private func setupUI() {
         view.backgroundColor = .white
         view.addSubview(notificationLabel)
