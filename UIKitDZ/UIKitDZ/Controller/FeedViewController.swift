@@ -1,0 +1,166 @@
+// FeedViewController.swift
+// Copyright © RoadMap. All rights reserved.
+
+import UIKit
+
+/// Главный экран приложения с лентой новостей
+final class FeedViewController: UIViewController {
+    // MARK: - Constants
+
+    enum Constants {
+        static let turPhoto = "turPhoto"
+        static let naturePicture = "naturePicture"
+        static let naturePictureTwo = "naturePictureTwo"
+        static let tenMinTextLabel = "10 минут назад"
+        static let turTitle = "tur_v_dagestan"
+    }
+
+    enum TypeCells {
+        case story
+        case post
+        case recommend
+        case posts
+    }
+
+    // MARK: - Visual Components
+
+    private let tableView: UITableView = {
+        let tableView = UITableView()
+        tableView.translatesAutoresizingMaskIntoConstraints = false
+        return tableView
+    }()
+
+    // MARK: - Private Properties
+
+    private var posts: [Post] = []
+    private let typeCells: [TypeCells] = [.story, .post, .recommend, .posts]
+
+    // MARK: - Life Cycle
+
+    override func viewDidLoad() {
+        super.viewDidLoad()
+
+        setupTableView()
+        setupConstraints()
+        setupNavigationBar()
+        setupGalery()
+    }
+
+    // MARK: - Public Methods
+
+    func setupNavigationBar() {
+        navigationItem.leftBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "rmLink"),
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        navigationItem.leftBarButtonItem?.tintColor = .black
+
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            image: UIImage(named: "message"),
+            style: .plain,
+            target: self,
+            action: nil
+        )
+        navigationItem.rightBarButtonItem?.tintColor = .black
+    }
+
+    // MARK: - Private Methods
+
+    private func setupTableView() {
+        tableView.dataSource = self
+        tableView.delegate = self
+        tableView.register(StorysCell.self, forCellReuseIdentifier: StorysCell.Constants.identifier)
+        tableView.register(PostCell.self, forCellReuseIdentifier: PostCell.Constants.identifier)
+        tableView.register(RecommendCell.self, forCellReuseIdentifier: RecommendCell.Constants.identifier)
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.backgroundColor = .white
+        tableView.separatorStyle = .none
+    }
+
+    private func setupGalery() {
+        let turPhotoImage = UIImage(named: Constants.turPhoto)
+        let turPictureImage = UIImage(named: Constants.naturePicture)
+        let turPictureImageTwo = UIImage(named: Constants.naturePictureTwo)
+
+        if let turPhoto = turPhotoImage, let turPicture = turPictureImage, let turPictureTwo = turPictureImageTwo {
+            let firstPostImages = [turPicture, turPictureTwo, turPicture]
+            let post1 = Post(
+                nickName: Constants.turTitle,
+                photoImage: turPhoto,
+                picturesImage: firstPostImages,
+                timeText: Constants.tenMinTextLabel
+            )
+            posts.append(post1)
+            posts.append(post1)
+            posts.append(post1)
+            posts.append(post1)
+            posts.append(post1)
+        }
+    }
+
+    private func setupConstraints() {
+        view.addSubview(tableView)
+        tableView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        tableView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
+        tableView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        tableView.widthAnchor.constraint(equalToConstant: 375).isActive = true
+    }
+}
+
+// MARK: - FeedViewController + UITableViewDelegate
+
+extension FeedViewController: UITableViewDelegate {}
+
+// MARK: - FeedViewController + UITableViewDataSource
+
+extension FeedViewController: UITableViewDataSource {
+    func numberOfSections(in tableView: UITableView) -> Int {
+        typeCells.count
+    }
+
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        let cellsType = typeCells[section]
+        switch cellsType {
+        case .story, .post, .recommend:
+            return 1
+        case .posts:
+            return posts.count
+        }
+    }
+
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cells = typeCells[indexPath.section]
+        switch cells {
+        case .story:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: StorysCell.Constants.identifier,
+                for: indexPath
+            ) as? StorysCell else { return UITableViewCell() }
+            return cell
+        case .recommend:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: RecommendCell.Constants.identifier,
+                for: indexPath
+            ) as? RecommendCell else { return UITableViewCell() }
+            return cell
+        case .posts:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PostCell.Constants.identifier,
+                for: indexPath
+            ) as? PostCell
+            else { return UITableViewCell() }
+            cell.configure(post: posts[indexPath.row])
+            return cell
+        case .post:
+            guard let cell = tableView.dequeueReusableCell(
+                withIdentifier: PostCell.Constants.identifier,
+                for: indexPath
+            ) as? PostCell
+            else { return UITableViewCell() }
+            cell.configure(post: posts[indexPath.row])
+            return cell
+        }
+    }
+}
