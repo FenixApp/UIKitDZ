@@ -1,15 +1,20 @@
-// AllPostsCell.swift
+// ProfilePostsCell.swift
 // Copyright © RoadMap. All rights reserved.
 
 import UIKit
 
-/// Ячейка для отображения всех постов в профиле
-final class AllPostsCell: UITableViewCell {
-    /// Идентификатор ячейки постов
-    static let identifier = "PostTileCell"
+/// Ячейка со всеми постами профиля
+final class ProfilePostsCell: UITableViewCell {
+    // MARK: - Constants
 
-    var collectionView: UICollectionView!
-    var images: [UIImage] = []
+    enum Constants {
+        static let identifier = "ProfilePostsCell"
+    }
+
+    // MARK: - Private Properties
+
+    private var collectionView: UICollectionView!
+    private var images: [UIImage] = []
 
     // MARK: - Life cycle
 
@@ -26,7 +31,6 @@ final class AllPostsCell: UITableViewCell {
 
     // MARK: - Private methods
 
-    /// Настройка коллекции
     private func setupCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.scrollDirection = .vertical
@@ -57,14 +61,11 @@ final class AllPostsCell: UITableViewCell {
 
 // MARK: - Extension UICollectionViewDataSource, UICollectionViewDelegate
 
-/// Расширение для облегчения настройки и управления источником данных и делегатом коллекции
-extension AllPostsCell: UICollectionViewDataSource, UICollectionViewDelegate {
-    /// Возвращает количество элементов в секции коллекции (картинка * 5)
+extension ProfilePostsCell: UICollectionViewDataSource, UICollectionViewDelegate {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         images.count * 5
     }
 
-    /// Возвращает ячейку для элемента коллекции по указанному индексу
     func collectionView(
         _ collectionView: UICollectionView,
         cellForItemAt indexPath: IndexPath

@@ -50,7 +50,7 @@ final class FeedViewController: UIViewController {
 
     func setupNavigationBar() {
         navigationItem.leftBarButtonItem = UIBarButtonItem(
-            image: UIImage(named: "RMLink"),
+            image: UIImage(named: "rmLink"),
             style: .plain,
             target: self,
             action: nil

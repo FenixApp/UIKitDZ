@@ -12,6 +12,10 @@ extension UIColor {
     static func recommendColor() -> UIColor? {
         UIColor(red: 210 / 255, green: 223 / 255, blue: 238 / 255, alpha: 1)
     }
+
+    static func profileColor() -> UIColor? {
+        UIColor(red: 239 / 255, green: 239 / 255, blue: 239 / 255, alpha: 1)
+    }
 }
 
 extension CGColor {
